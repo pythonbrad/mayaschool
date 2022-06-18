@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'students.apps.StudentsConfig',
     'staffs.apps.StaffsConfig',
+    'finance.apps.FinanceConfig',
 ]
 
 MIDDLEWARE = [
