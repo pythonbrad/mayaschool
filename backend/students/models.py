@@ -2,6 +2,7 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.utils import timezone
 import string
+from core.models import AcademicSession, SubClass
 
 
 class Student(models.Model):
@@ -56,3 +57,14 @@ class Student(models.Model):
             self.generate_matricule('S')
         else:
             pass
+
+
+class ClassStudent(models.Model):
+    """Student of a class."""
+
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    subclass = models.ForeignKey(SubClass, on_delete=models.CASCADE)
+    session = models.ForeignKey(AcademicSession, on_delete=models.CASCADE, default=AcademicSession.get_current)
+
+    class Meta:
+        unique_together = (('student', 'session'),)
