@@ -3,3 +3,4 @@ __pycache__
 [0-9]*.py
 db.sqlite3
 media
+static/vendor
