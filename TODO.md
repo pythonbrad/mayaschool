@@ -5,7 +5,7 @@ An school management system.
 [Build a Highly Effective School Management System](https://www.nexxushub.com/blog/10-features-of-a-highly-effective-school-management-system)
 
 # TODO
-- [ ] front-end (modular)
+- [ ] front-end
     - [ ] login page
     - [ ] base page
     - [ ] profile
@@ -51,7 +51,7 @@ An school management system.
         - [ ] export data
     - [ ] FAQ
     - [ ] License
-- [ ] back-end (modular and less calculation as possible
+- [ ] back-end
     - config the debug log
     - [ ] core
         - [ ] user info
