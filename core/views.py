@@ -3,8 +3,10 @@ from students.models import ClassStudent
 from staffs.models import Staff
 from .models import AcademicSession, SubClass
 from finance.models import Invoice
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def index(request):
     return render(request, 'core/dashboard.html', {
         'title': 'Dashboard',
