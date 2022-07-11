@@ -1,4 +1,24 @@
-from .models import (
-    SystemConfig, AcademicSession, AcademicTerm,
-    Subject, Class, SubClass
-)
+from django.shortcuts import render
+from students.models import ClassStudent
+from staffs.models import Staff
+from .models import AcademicSession, SubClass
+from finance.models import Invoice
+
+
+def index(request):
+    return render(request, 'core/dashboard.html', {
+        'title': 'Dashboard',
+        'current_page': 'dashboard',
+        'nb_students': ClassStudent.objects.filter(
+            session=AcademicSession.get_current(), student__status='active').count(),
+        'nb_staffs': Staff.objects.filter(
+            status='active').count(),
+        'nb_classes': SubClass.objects.count(),
+        'total_incomes': sum([
+            invoice.total_amount_paid() for invoice in Invoice.objects.filter(
+                session=AcademicSession.get_current()
+            )
+        ]),
+        'current_session': '2022/2023',
+        'current_term': '1st Semester'
+    })
