@@ -24,13 +24,28 @@ class AcademicSession(models.Model):
     def __str__(self):
         return self.name
 
-    def get_current():
-        current = AcademicSession.objects.filter(current=True)
-
-        if current.exists():
-            return current.get().pk
+    def save(self, *args, **kwargs):
+        if self.current:
+            AcademicSession.objects.filter(current=True).update(current= False)
         else:
-            return AcademicSession.objects.create(name="NONE").pk
+            pass
+        super().save(*args, **kwargs)
+
+    def get_current():
+        data = AcademicSession.objects.filter()
+
+        if data.exists():
+            current = data.filter(current=True)
+
+            if current.exists(): 
+                return current.get()
+            else:
+                current = data.last()
+                current.current = True
+                current.save()
+                return current
+        else:
+            return AcademicSession.objects.create(name="NONE", current=True)
 
 
 class AcademicTerm(models.Model):
@@ -45,13 +60,28 @@ class AcademicTerm(models.Model):
     def __str__(self):
         return self.name
 
-    def get_current():
-        current = AcademicTerm.objects.filter(current=True)
-
-        if current.exists():
-            return current.get().pk
+    def save(self, *args, **kwargs):
+        if self.current:
+            AcademicTerm.objects.filter(current=True).update(current= False)
         else:
-            return AcademicTerm.objects.create(name="NONE").pk
+            pass
+        super().save(*args, **kwargs)
+
+    def get_current():
+        data = AcademicTerm.objects.filter()
+
+        if data.exists():
+            current = data.filter(current=True)
+
+            if current.exists(): 
+                return current.get()
+            else:
+                current = data.last()
+                current.current = True
+                current.save()
+                return current
+        else:
+            return AcademicTerm.objects.create(name="NONE", current=True)
 
 
 class Subject(models.Model):
@@ -84,12 +114,13 @@ class SubClass(models.Model):
     """Child class."""
 
     parent = models.ForeignKey(Class, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, unique=True)
+    name = models.CharField(max_length=200)
 
     class Meta:
         verbose_name = "SubClass"
         verbose_name_plural = "SubClasses"
         ordering = ["name"]
+        unique_together = ['parent', 'name']
 
     def __str__(self):
         return self.parent.name + ' ' + self.name
