@@ -6,16 +6,16 @@ An school management system.
 
 # TODO
 - [ ] front-end
-    - [ ] login page
-    - [ ] base page
+    - [x] login page
+    - [x] base page
     - [ ] profile
         - [ ] photo
         - [ ] password
-    - [ ] dashboard menu (admin, registrar, accountant)
-        - [ ] see number of student
-        - [ ] see number of class
-        - [ ] see number of staff
-        - [ ] see income
+    - [x] dashboard menu (admin, registrar, accountant)
+        - [x] see number of student
+        - [x] see number of class
+        - [x] see number of staff
+        - [x] see income
     - [ ] student menu (admin, registrar)
         - [ ] add/update student
         - [ ] csv upload bulk
@@ -40,19 +40,20 @@ An school management system.
             - [ ] by session, parent/child class
             - [ ] by session, term, parent/child class
     - [ ] extras menu (admin)
-        - [ ] add/update session
-        - [ ] add/update term
-        - [ ] add/update course
-        - [ ] add/update class
-            - [ ] parent class
-            - [ ] child class
+        - [x] add/update session
+        - [x] add/update term
+        - [x] add/update course
+        - [x] add/update class
+            - [x] parent class
+            - [x] child class
     - [ ] tools (admin)
         - [ ] import data
         - [ ] export data
     - [ ] FAQ
     - [ ] License
+    - [ ] Translation (English and French)
 - [ ] back-end
-    - config the debug log
+    - [x] config the debug log
     - [ ] core
         - [ ] user info
         - [ ] system config (session, term, parent/child class)
@@ -65,3 +66,5 @@ An school management system.
         - [ ] invoice transaction (10,000+25,000+15,000=50,000)
     - [ ] note
         - [ ] note
+    - [ ] refactor (eg: templates/session, ...)
+    - [ ] review the string representation of the models
