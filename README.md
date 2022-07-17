@@ -1,27 +1,68 @@
-# Backend of mayaschool
+# Mayaschool
+School management system.
 
-## How to install the depedencies
-```sh
+![Overview](screenshot.png)
+
+## Installation
+
+### Backend of mayaschool
+
+- Download the source code
+```bash
+git clone -b dev https://github.com/pythonbrad/mayaschool.git --depth 1 
+```
+
+- Creating of a virtual env
+```bash
+python3 -m venv maya_env
+source maya_env/bin/activate
+```
+
+- How to install the depedencies
+```bash
 pip install django
 pip install pillow
 ```
 
-## How to config the database
-```sh
+- How to config the database
+```bash
+cd mayaschool
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-# Frontend of mayaschool
+- How to create an admin account
+```bash
+python manage.py createsuperuser
+```
 
-## How to install the depedencies
-```sh
+- How to clean the migrationq
+```bash
+for migration in $(find . | grep "migrations/0.*.py");do rm -f $migration; done
+````
+
+### Frontend of mayaschool
+
+- How to install the depedencies
+```bash
 cd static
 mkdir vendor
 cd vendor
-git clone https://github.com/ColorlibHQ/AdminLTE.git tmp
+git clone --depth 1 https://github.com/ColorlibHQ/AdminLTE.git tmp
 cp -r tmp/dist adminlte
 cp tmp/LICENSE adminlte/LICENSE
 cp -r tmp/plugins/* .
 rm -rf tmp
 ```
+
+### Run the project
+```bash
+python manage.py runserver 
+```
+
+### Demo
+A demo is available on [here](http://pythonbrad.pythonanywhere.com/).
+Username: root
+Password: root
+
+## [License](LICENSE.md)
