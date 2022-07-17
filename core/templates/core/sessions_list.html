@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container-fluid card">
+  <div class="card-header">
+    <a class="btn btn-primary" href="{% url 'new_session' %}"><i class="fas fa-plus"></i> New session</a>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table id="sessions_table" class="table table-bordered table-hover" data-page-length='100'>
+        <thead class="thead-light">
+          <tr>
+            <th>S/N</th>
+            <th>Name</th>
+            <th>Is current?</th>
+            <th>Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for session in sessions %}
+          <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ session.name }}</td>
+              <td>{{ session.current }}</td>
+              <td>
+                <a href="{% url 'edit_session' session.pk %}"><i class="fa fa-edit"></i></a>
+                <a href="{% url 'delete_session' session.pk %}"><i class="fa fa-trash-alt"></i></a>
+              </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    $('#sessions_table').DataTable({});
+</script>
+{% endblock %}
