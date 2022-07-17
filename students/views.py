@@ -6,7 +6,7 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'students/students_list.html', {
         'title': 'Students',
-        'class_students': ClassStudent.objects.filter(session=AcademicSession.get_current())
+        'class_students': ClassStudent.objects.filter(session=request.current_session)
     })
 
 
