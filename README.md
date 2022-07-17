@@ -55,4 +55,9 @@ rm -rf tmp
 python manage.py runserver 
 ```
 
+### Demo
+A demo is available on [here](http://pythonbrad.pythonanywhere.com/).
+Username: root
+Password: root
+
 ## [License](LICENSE.md)
