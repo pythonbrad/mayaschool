@@ -12,15 +12,13 @@ def index(request):
         'title': 'Dashboard',
         'current_page': 'dashboard',
         'nb_students': ClassStudent.objects.filter(
-            session=AcademicSession.get_current(), student__status='active').count(),
+            session=request.current_session, student__status='active').count(),
         'nb_staffs': Staff.objects.filter(
             status='active').count(),
         'nb_classes': SubClass.objects.count(),
         'total_incomes': sum([
             invoice.total_amount_paid() for invoice in Invoice.objects.filter(
-                session=AcademicSession.get_current()
+                session=request.current_session
             )
         ]),
-        'current_session': '2022/2023',
-        'current_term': '1st Semester'
     })

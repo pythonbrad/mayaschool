@@ -19,10 +19,10 @@
           </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Session: {{ current_session }}</a>
+          <a href="{% url 'edit_session' request.current_session.pk %}" class="nav-link">Session: {{ request.current_session.name }}</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Term: {{ current_term }}</a>
+          <a href="{% url 'edit_term' request.current_term.pk %}" class="nav-link">Term: {{ request.current_term.name }}</a>
         </li>
       </ul>
 
