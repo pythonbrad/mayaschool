@@ -2,12 +2,12 @@
 {% block content %}
 <div class="container-fluid card">
   <div class="card-header">
-    <a class="btn btn-primary" href="#"><i class="fas fa-plus"></i> New student</a>
+    <a class="btn btn-primary" href="{% url 'new_student' %}"><i class="fas fa-plus"></i> New student</a>
     <a class="btn btn-primary" href="#"><i class="fas fa-upload"></i> Upload students</a>
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table id="students_table" class="table table-bordered table-hover" data-page-length='100' onload="">
+      <table id="students_table" class="table table-bordered table-hover" data-page-length='100'>
         <thead class="thead-light">
           <tr>
             <th>S/N</th>
@@ -15,20 +15,26 @@
             <th>Registration Number</th>
             <th>Current Class</th>
             <th>Gender</th>
-            <th>Mobile Phone Number</th>
+            <th>Parent Mobile Number</th>
             <th>Status</th>
+            <th>Option</th>
           </tr>
         </thead>
         <tbody>
             {% for class_student in class_students %}
-            <tr class='clickable-row' data-href="{% url 'student_details' class_student.student.pk %}">
+            <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ class_student.student.surname }} {{ class_student.student.firstname }} {{ class_student.student.other_name }}</td>
                 <td>{{ class_student.student.matricule }}</td>
-                <td>{{ class_student.student.current_class }}</td>
-                <td>{{ class_student.student.gender }}</td>
+                <td>{{ class_student.student.get_current_class.subclass }}</td>
+                <td>{{ class_student.student.get_gender_display }}</td>
                 <td>{{ class_student.student.parent_mobile_number }}</td>
-                <td>{{ class_student.student.current_status }}</td>
+                <td>{{ class_student.student.get_status_display }}</td>
+                <td>
+                  <a href="{% url 'student_details' class_student.student.pk %}"><i class="fa fa-eye"></i></a>
+                  <a href="{% url 'edit_student' class_student.student.pk %}"><i class="fa fa-edit"></i></a>
+                  <a href="{% url 'delete_student' class_student.student.pk %}"><i class="fa fa-trash-alt"></i></a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
