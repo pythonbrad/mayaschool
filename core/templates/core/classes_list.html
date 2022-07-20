@@ -16,7 +16,7 @@
         </thead>
         <tbody>
           {% for classe in classes %}
-          <tr>
+          <tr class='clickable-row' data-href="{% url 'edit_class' classe.pk %}">
               <td>{{ forloop.counter }}</td>
               <td>{{ classe.name }}</td>
               <td>

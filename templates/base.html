@@ -40,6 +40,14 @@
     <script src="{% static 'vendor/datatables-buttons/js/buttons.html5.min.js' %}"></script>
     <script src="{% static 'vendor/datatables-buttons/js/buttons.print.min.js' %}"></script>
     <script src="{% static 'vendor/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+    <script>
+      (function ($) {
+        $('.clickable-row').css('cursor', 'pointer');
+        $(".clickable-row").click(function () {
+          window.location = $(this).data("href");
+        });
+      })(jQuery)
+    </script>
     {% block script %}{% endblock %}
   </body>
 </html>
