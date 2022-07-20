@@ -17,9 +17,9 @@ An school management system.
         - [x] see number of staff
         - [x] see income
     - [ ] student menu (admin, registrar)
-        - [ ] add/update student
+        - [x] add/update student
         - [ ] csv upload bulk
-        - [ ] student list (show, sort, search)
+        - [x] student list (show, sort, search)
         - [ ] download student list (general, by parent/child class, solo)
     - [ ] school staff menu (admin, registrar)
         - [ ] add/update staff
@@ -56,9 +56,9 @@ An school management system.
     - [x] config the debug log
     - [ ] core
         - [ ] user info
-        - [ ] system config (session, term, parent/child class)
-    - [ ] student
-        - [ ] info
+        - [x] system config (session, term, parent/child class)
+    - [x] student
+        - [x] info
     - [ ] school staff
         - [ ] info
     - [ ] invoice
@@ -66,5 +66,5 @@ An school management system.
         - [ ] invoice transaction (10,000+25,000+15,000=50,000)
     - [ ] note
         - [ ] note
-    - [ ] refactor (eg: templates/session, ...)
+    - [x] refactor (eg: templates/session, ...)
     - [ ] review the string representation of the models
