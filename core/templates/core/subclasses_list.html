@@ -16,14 +16,14 @@
           </tr>
         </thead>
         <tbody>
-          {% for subclasse in subclasses %}
-          <tr>
+          {% for subclass in subclasses %}
+          <tr class='clickable-row' data-href="{% url 'edit_subclass' subclass.pk %}">
               <td>{{ forloop.counter }}</td>
-              <td>{{ subclasse.parent }}</td>
-              <td>{{ subclasse.name }}</td>
+              <td>{{ subclass.parent }}</td>
+              <td>{{ subclass.name }}</td>
               <td>
-                <a href="{% url 'edit_subclass' subclasse.pk %}"><i class="fa fa-edit"></i></a>
-                <a href="{% url 'delete_subclass' subclasse.pk %}"><i class="fa fa-trash-alt"></i></a>
+                <a href="{% url 'edit_subclass' subclass.pk %}"><i class="fa fa-edit"></i></a>
+                <a href="{% url 'delete_subclass' subclass.pk %}"><i class="fa fa-trash-alt"></i></a>
               </td>
           </tr>
           {% endfor %}

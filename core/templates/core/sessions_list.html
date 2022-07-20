@@ -17,7 +17,7 @@
         </thead>
         <tbody>
           {% for session in sessions %}
-          <tr>
+          <tr class='clickable-row' data-href="{% url 'edit_session' session.pk %}">
               <td>{{ forloop.counter }}</td>
               <td>{{ session.name }}</td>
               <td>{{ session.current }}</td>

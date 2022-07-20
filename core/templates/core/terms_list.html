@@ -17,7 +17,7 @@
         </thead>
         <tbody>
           {% for term in terms %}
-          <tr>
+          <tr class='clickable-row' data-href="{% url 'edit_term' term.pk %}">
               <td>{{ forloop.counter }}</td>
               <td>{{ term.name }}</td>
               <td>{{ term.current }}</td>
