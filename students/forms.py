@@ -1,5 +1,4 @@
 from django import forms
-from .models import Student
 from core.models import SubClass
 from core.forms import PersonForm
 
