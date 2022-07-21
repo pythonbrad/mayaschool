@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container-fluid card">
+  <div class="card-header">
+    <a class="btn btn-primary" href="{% url 'new_staff' %}"><i class="fas fa-plus"></i> New staff</a>
+    <a class="btn btn-primary" href="#"><i class="fas fa-upload"></i> Upload staffs</a>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table id="staffs_table" class="table table-bordered table-hover" data-page-length='100'>
+        <thead class="thead-light">
+          <tr>
+            <th>S/N</th>
+            <th>Fullname</th>
+            <th>Registration Number</th>
+            <th>Is teacher?</th>
+            <th>Gender</th>
+            <th>Mobile Number</th>
+            <th>Status</th>
+            <th>Option</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for staff in staffs %}
+            <tr class='clickable-row' data-href="{% url 'staff_details' staff.pk %}">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ staff.person.surname }} {{ staff.person.firstname }} {{ staff.person.other_name }}</td>
+                <td>{{ staff.person.matricule }}</td>
+                <td>{% if staff.is_teacher %}Yes{% else %}No{% endif %}</td>
+                <td>{{ staff.person.get_gender_display }}</td>
+                <td>{{ staff.person.mobile_number }}</td>
+                <td>{{ staff.person.get_status_display }}</td>
+                <td>
+                  <a href="{% url 'staff_details' staff.pk %}"><i class="fa fa-eye"></i></a>
+                  <a href="{% url 'edit_staff' staff.pk %}"><i class="fa fa-edit"></i></a>
+                  <a href="{% url 'delete_staff' staff.pk %}"><i class="fa fa-trash-alt"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    $('#staffs_table').DataTable({});
+</script>
+{% endblock %}
