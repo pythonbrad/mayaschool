@@ -8,6 +8,10 @@ class Staff(models.Model):
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
     tag = 'P'
 
+
+    def is_teacher(self):
+        return ClassTeacher.objects.filter(teacher=self).exists()
+
     def save(self, *args, **kwargs):
         """Save."""
         super().save(*args, **kwargs)
