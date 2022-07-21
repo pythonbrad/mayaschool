@@ -1,4 +1,7 @@
 from django.db import models
+from django.utils import timezone
+from django.core.validators import RegexValidator
+import string
 
 
 # Create your models here.
@@ -124,3 +127,49 @@ class SubClass(models.Model):
 
     def __str__(self):
         return self.parent.name + ' ' + self.name
+
+
+class Person(models.Model):
+    """Person."""
+
+    STATUS_CHOICES = [("active", "Active"), ("inactive", "Inactive")]
+
+    GENDER_CHOICES = [("male", "Male"), ("female", "Female")]
+
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default="active"
+    )
+    matricule = models.CharField(max_length=16, unique=True)
+    surname = models.CharField(max_length=200)
+    firstname = models.CharField(max_length=200)
+    other_name = models.CharField(max_length=200, blank=True)
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default="male")
+    date_of_birth = models.DateField()
+    joined_date = models.DateField(default=timezone.now)
+
+    mobile_num_regex = RegexValidator(
+        regex=r"^[0-9]{9}$", message="Entered mobile number isn't in a right format!"
+    )
+    mobile_number = models.CharField(
+        validators=[mobile_num_regex], max_length=9, blank=True
+    )
+
+    address = models.TextField(blank=True)
+    others = models.TextField(blank=True)
+    passport = models.ImageField(blank=True, upload_to="students/passports/")
+    diploma = models.CharField(blank=True, max_length=255)
+    email = models.EmailField(blank=True)
+
+    class Meta:
+        ordering = ["surname", "firstname", "other_name"]
+
+    def generate_matricule(self, obj):
+        """Generate matricule."""
+        self.matricule = ("%c%2i%c%3i" % (
+            obj.tag,
+            self.joined_date.year % 1000,
+            string.ascii_uppercase[obj.pk // 1000],
+            obj.pk % 1000
+        )).replace(' ', '0')
+        self.save(update_fields=['matricule'])
+
