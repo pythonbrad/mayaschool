@@ -36,6 +36,11 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
+- How to clean the migrationq
+```bash
+for migration in $(find . | grep "migrations/0.*.py");do rm -f $migration; done
+````
+
 ### Frontend of mayaschool
 
 - How to install the depedencies
