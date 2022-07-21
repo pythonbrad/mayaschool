@@ -25,7 +25,7 @@ def create(request):
             pass
     else:
         form = AcademicTermForm()
-    return render(request, 'new_object.html', {
+    return render(request, 'object_form.html', {
         'title': 'New session',
         'current_page': 'setting.term',
         'form': form
@@ -44,7 +44,7 @@ def edit(request, pk):
             pass
     else:
         form = AcademicTermForm(instance=obj)
-    return render(request, 'new_object.html', {
+    return render(request, 'object_form.html', {
         'title': 'Edit term',
         'current_page': 'setting.term',
         'form': form,

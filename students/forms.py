@@ -4,7 +4,7 @@ from core.forms import PersonForm
 
 
 def get_subclass_choices():
-    return ((i.pk, i.name) for i in SubClass.objects.filter())
+    return ((i.pk, i.name) for i in SubClass.objects.all())
 
 
 class StudentForm(PersonForm):

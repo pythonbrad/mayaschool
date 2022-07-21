@@ -29,13 +29,13 @@ class AcademicSession(models.Model):
 
     def save(self, *args, **kwargs):
         if self.current:
-            AcademicSession.objects.filter(current=True).update(current= False)
+            AcademicSession.objects.filter(current=True).update(current=False)
         else:
             pass
         super().save(*args, **kwargs)
 
     def get_current():
-        data = AcademicSession.objects.filter()
+        data = AcademicSession.objects.all()
 
         if data.exists():
             current = data.filter(current=True)
@@ -65,13 +65,13 @@ class AcademicTerm(models.Model):
 
     def save(self, *args, **kwargs):
         if self.current:
-            AcademicTerm.objects.filter(current=True).update(current= False)
+            AcademicTerm.objects.filter(current=True).update(current=False)
         else:
             pass
         super().save(*args, **kwargs)
 
     def get_current():
-        data = AcademicTerm.objects.filter()
+        data = AcademicTerm.objects.all()
 
         if data.exists():
             current = data.filter(current=True)

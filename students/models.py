@@ -20,7 +20,7 @@ class Student(models.Model):
             pass
 
     def get_current_class(self):
-        return ClassStudent.objects.get(student=self, session=AcademicSession.get_current())
+        return self.classstudent_set.get(session=AcademicSession.get_current())
 
 
 class ClassStudent(models.Model):

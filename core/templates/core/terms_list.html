@@ -21,9 +21,9 @@
               <td>{{ forloop.counter }}</td>
               <td>{{ term.name }}</td>
               <td>{{ term.current }}</td>
-              <td>
-                <a href="{% url 'edit_term' term.pk %}"><i class="fa fa-edit"></i></a>
-                <a href="{% url 'delete_term' term.pk %}"><i class="fa fa-trash-alt"></i></a>
+              <td class="row text-center">
+                <a class="col" href="{% url 'edit_term' term.pk %}"><i class="fa fa-edit"></i></a>
+                <a class="col" href="{% url 'delete_term' term.pk %}"><i class="fa fa-trash-alt"></i></a>
               </td>
           </tr>
           {% endfor %}
