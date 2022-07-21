@@ -24,12 +24,12 @@
             {% for class_student in class_students %}
             <tr class='clickable-row' data-href="{% url 'student_details' class_student.student.pk %}">
                 <td>{{ forloop.counter }}</td>
-                <td>{{ class_student.student.surname }} {{ class_student.student.firstname }} {{ class_student.student.other_name }}</td>
-                <td>{{ class_student.student.matricule }}</td>
+                <td>{{ class_student.student.person.surname }} {{ class_student.student.person.firstname }} {{ class_student.student.person.other_name }}</td>
+                <td>{{ class_student.student.person.matricule }}</td>
                 <td>{{ class_student.student.get_current_class.subclass }}</td>
-                <td>{{ class_student.student.get_gender_display }}</td>
-                <td>{{ class_student.student.parent_mobile_number }}</td>
-                <td>{{ class_student.student.get_status_display }}</td>
+                <td>{{ class_student.student.person.get_gender_display }}</td>
+                <td>{{ class_student.student.person.mobile_number }}</td>
+                <td>{{ class_student.student.person.get_status_display }}</td>
                 <td>
                   <a href="{% url 'student_details' class_student.student.pk %}"><i class="fa fa-eye"></i></a>
                   <a href="{% url 'edit_student' class_student.student.pk %}"><i class="fa fa-edit"></i></a>

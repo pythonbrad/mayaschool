@@ -29,7 +29,11 @@ def create(request):
         form = StudentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            ClassStudent.objects.create(subclass=SubClass.objects.get(pk=form.cleaned_data['current_class']), student=form.instance)
+            Student.objects.create(person=form.instance)
+            ClassStudent.objects.create(
+                subclass=SubClass.objects.get(pk=form.cleaned_data['current_class']),
+                student=form.instance.student
+            )
             return redirect('students')
         else:
             pass
@@ -46,7 +50,7 @@ def create(request):
 def edit(request, pk):
     obj = get_object_or_404(Student, pk=pk)
     if request.POST:
-        form = StudentForm(request.POST, request.FILES, instance=obj)
+        form = StudentForm(request.POST, request.FILES, instance=obj.person)
         if form.is_valid():
             form.save()
             current_class = obj.get_current_class()
@@ -56,7 +60,7 @@ def edit(request, pk):
         else:
             pass
     else:
-        form = StudentForm(instance=obj)
+        form = StudentForm(instance=obj.person)
     return render(request, 'new_object.html', {
         'title': 'Edit Student',
         'current_page': 'student',

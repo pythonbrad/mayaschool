@@ -6,10 +6,10 @@
     <div class="card-header">
       <div class="card-tools">
         <a href="#" class="btn btn-tool">Print</a>
-        <a href="{% url 'edit_student' student.id %}" class="btn btn-tool">
+        <a href="{% url 'edit_student' student.pk %}" class="btn btn-tool">
           <i class="fas fa-edit"></i>
         </a>
-        <a href="{% url 'delete_student' student.id %}" class="btn btn-tool">
+        <a href="{% url 'delete_student' student.pk %}" class="btn btn-tool">
           <i class="fas fa-times"></i>
         </a>
       </div>
@@ -18,40 +18,40 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="row mb-2">
-              <img src="{% if student.passport %}{{ student.passport.url }}{% else %}{% static 'vendor/adminlte/img/avatar.png' %}{% endif %}" class="float-left rounded-circle mr-3" style="width: 120px; height: 120px;">
+              <img src="{% if student.person.passport %}{{ student.person.passport.url }}{% else %}{% static 'vendor/adminlte/img/avatar.png' %}{% endif %}" class="float-left rounded-circle mr-3" style="width: 120px; height: 120px;">
             <div class="float-right">
-              <h4>{{ student.surname }}</h4>
-              <h4>{{ student.firstname }}</h4>
-              <h4>{{ student.other_name }}</h4>
-              <h4>{{ student.registration_number }}</h4>
+              <h4>{{ student.person.surname }}</h4>
+              <h4>{{ student.person.firstname }}</h4>
+              <h4>{{ student.person.other_name }}</h4>
+              <h4>{{ student.person.matricule }}</h4>
             </div>
           </div>
           <div class="row">
             <h5>{{ student.get_current_class.subclass }}</h5>
           </div>
           <div class="row">
-            <h5>{{ student.get_gender_display }} | {{ student.get_status_display }}</h5>
+            <h5>{{ student.person.get_gender_display }} | {{ student.person.get_status_display }}</h5>
           </div>
         </div>
         <div class="col-sm-8">
           <table class="table">
             <tr>
               <th>Date of Birth</th>
-              <td>{{ student.date_of_birth }}</td>
+              <td>{{ student.person.date_of_birth }}</td>
             </tr>
 
             <tr>
               <th>Parent Mobile Number</th>
-              <td>{{ student.parent_mobile_number}}</td>
+              <td>{{ student.person.mobile_number}}</td>
             </tr>
 
             <tr>
               <th>Address</th>
-              <td>{{ student.address }}</td>
+              <td>{{ student.person.address }}</td>
             </tr>
             <tr>
               <th>Comments</th>
-              <td>{{ student.others }}</td>
+              <td>{{ student.person.others }}</td>
             </tr>
           </table>
         </div>

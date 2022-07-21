@@ -13,9 +13,9 @@ def index(request):
         'title': 'Dashboard',
         'current_page': 'dashboard',
         'nb_students': ClassStudent.objects.filter(
-            session=request.current_session, student__status='active').count(),
+            session=request.current_session, student__person__status='active').count(),
         'nb_staffs': Staff.objects.filter(
-            status='active').count(),
+            person__status='active').count(),
         'nb_classes': SubClass.objects.count(),
         'total_incomes': sum([
             invoice.total_amount_paid() for invoice in Invoice.objects.filter(
