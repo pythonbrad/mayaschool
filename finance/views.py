@@ -1,2 +1,140 @@
-from core.models import AcademicSession
-from .models import Invoice, InvoiceItem, Receipt
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Invoice, Receipt
+from .forms import InvoiceForm, ReceiptForm, InvoiceItemFormSet
+
+
+@login_required
+def invoices(request):
+    return render(request, 'finance/invoices_list.html', {
+        'title': 'Invoices',
+        'current_page': 'invoice',
+        'invoices': request.current_session.invoice_set.all()
+    })
+
+
+@login_required
+def invoice_details(request, pk):
+    obj = get_object_or_404(Invoice, pk=pk)
+    return render(request, 'finance/invoice_details.html', {
+        'invoice': obj,
+        'items': obj.invoiceitem_set.all(),
+        'receipts': obj.receipt_set.all(),
+        'title': 'Invoice Details',
+        'current_page': 'invoice',
+    })
+
+
+@login_required
+def create_invoice(request):
+    if request.POST:
+        invoice_form = InvoiceForm(request.POST)
+        invoice_items_form = InvoiceItemFormSet(request.POST)
+        if invoice_form.is_valid() and invoice_items_form.is_valid():
+            invoice_form.save()
+            invoice_items_form.instance = invoice_form.instance
+            invoice_items_form.save()
+            return redirect('invoices')
+        else:
+            pass
+    else:
+        invoice_form = InvoiceForm()
+        invoice_items_form = InvoiceItemFormSet()
+    return render(request, 'finance/invoice_form.html', {
+        'title': 'New Invoice',
+        'current_page': 'invoice',
+        'form': invoice_form,
+        'items': invoice_items_form,
+    })
+
+
+@login_required
+def edit_invoice(request, pk):
+    obj = get_object_or_404(Invoice, pk=pk)
+    if request.POST:
+        invoice_form = InvoiceForm(request.POST, instance=obj)
+        invoice_items_form = InvoiceItemFormSet(request.POST, instance=obj)
+        if invoice_form.is_valid() and invoice_items_form.is_valid():
+            invoice_form.save()
+            invoice_items_form.save()
+            return redirect('invoices')
+        else:
+            print(invoice_form.errors, invoice_items_form.errors)
+    else:
+        invoice_form = InvoiceForm(instance=obj)
+        invoice_items_form = InvoiceItemFormSet(instance=obj)
+    return render(request, 'finance/invoice_form.html', {
+        'title': 'Edit Invoice',
+        'current_page': 'invoice',
+        'form': invoice_form,
+        'items': invoice_items_form
+    })
+
+
+@login_required
+def delete_invoice(request, pk):
+    obj = get_object_or_404(Invoice, pk=pk)
+    if request.POST:
+        obj.delete()
+        return redirect('invoices')
+    else:
+        pass
+    return render(request, 'delete_object.html', {
+        'title': 'Delete invoice',
+        'object': obj,
+        'current_page': 'invoice',
+    })
+
+
+@login_required
+def create_receipt(request, pk):
+    if request.POST:
+        form = ReceiptForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('invoice_details', pk=pk)
+        else:
+            pass
+    else:
+        form = ReceiptForm()
+    return render(request, 'finance/receipt_form.html', {
+        'title': 'New Receipt',
+        'invoice': get_object_or_404(Invoice, pk=pk),
+        'current_page': 'invoice',
+        'form': form
+    })
+
+
+@login_required
+def edit_receipt(request, id, pk):
+    obj = get_object_or_404(Receipt, pk=pk, invoice_id=id)
+    if request.POST:
+        form = ReceiptForm(request.POST, instance=obj)
+        if form.is_valid():
+            form.save()
+            return redirect('invoice_details', pk=id)
+        else:
+            pass
+    else:
+        form = ReceiptForm(instance=obj)
+    return render(request, 'finance/receipt_form.html', {
+        'title': 'Edit Receipt',
+        'invoice': get_object_or_404(Invoice, pk=id),
+        'current_page': 'invoice',
+        'form': form
+    })
+
+
+@login_required
+def delete_receipt(request, id, pk):
+    obj = get_object_or_404(Receipt, pk=pk, invoice_id=id)
+    if request.POST:
+        obj.delete()
+        return redirect('invoice_details', pk=id)
+    else:
+        pass
+    return render(request, 'delete_object.html', {
+        'title': 'Delete receipt',
+        'object': obj,
+        'current_page': 'receipt',
+    })

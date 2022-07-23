@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+{% load humanize %}
+
+{% block content %}
+<div class="container-fluid card">
+  <div class="card-header">
+    <a class="btn btn-primary" href="{% url 'new_invoice' %}"><i class="fas fa-plus"></i> New Invoice</a>
+    <a class="btn btn-primary" href="{% url '#"><i class="fas fa-upload"></i> Bulk Invoice</a>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table id="invoicetable" class="table table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th>S/N</th>
+            <th>Invoice</th>
+            <th>Term</th>
+            <th>Total Payable</th>
+            <th>Total Paid</th>
+            <th>Balance</th>
+            <th>Option</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {% for invoice in invoices %}
+            <tr class='clickable-row' data-href="{% url 'invoice_details' invoice.pk %}">
+              <td>{{ forloop.counter }}</td>
+              <td>{{ invoice }}</td>
+              <td>{{ invoice.term }}</td>
+              <td>{{ invoice.total_amount_payable | intcomma }}</td>
+              <td>{{ invoice.total_amount_paid | intcomma }}</td>
+              <td>{{ invoice.balance | intcomma }}</td>
+              <td class="row text-center">
+                <a class="col btn" href="{% url 'invoice_details' invoice.pk %}"><i class="fa fa-eye text-primary"></i></a>
+                <a class="col btn" href="{% url 'edit_invoice' invoice.pk %}"><i class="fa fa-edit text-primary"></i></a>
+                <a class="col btn" href="{% url 'delete_invoice' invoice.pk %}"><i class="fa fa-trash-alt text-primary"></i></a>
+              </td>
+            </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script>
+   $('#invoicetable').DataTable({});
+</script>
+{% endblock %}
