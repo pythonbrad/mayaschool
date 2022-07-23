@@ -1,0 +1,95 @@
+{% extends 'index.html' %}
+{% load humanize %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <a class="btn btn-success" href="{% url 'new_receipt' invoice.pk %}">Add new receipt</a>
+    <div class="card-tools">
+      <a href="#" class="btn btn-tool">Print</a>
+      <a href="{% url 'edit_invoice' invoice.pk %}" class="btn btn-tool">
+        <i class="fas fa-edit"></i>
+      </a>
+      <a href="{% url 'delete_invoice' invoice.pk %}" class="btn btn-tool">
+        <i class="fas fa-times"></i>
+      </a>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>{{ invoice }} </h3>
+        <h5>{{ invoice.session }} </h5>
+        <h5>{{ invoice.term }} </h5>
+        <h5>{{ invoice.student.get_current_class.subclass }} </h5>
+        <h6>Status: {{ invoice.get_status_display }} </h6>
+        <hr>
+        <div>
+          <h4>Expected Balance: {{ invoice.balance | intcomma }}</h4>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <table class="table table-sm table-bordered">
+          Invoice Breakdown</br>
+          <thead class="thead-light">
+            <tr>
+              <th>S/N</th>
+              <th>Description</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in items %}
+            <tr>
+              <td>{{ forloop.counter }} </td>
+              <td>{{ item.description }} </td>
+              <td>{{ item.amount | intcomma }} </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td></td>
+              <td>Total Amount Payable</td>
+              <td>{{ invoice.total_amount_payable | intcomma }}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Total Amount Paid</td>
+              <td>{{ invoice.total_amount_paid | intcomma }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <h5>Payment History</h5>
+    <table class="table table-bordered table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th>S/N</th>
+          <th>Amount Paid</th>
+          <th>Date Paid</th>
+          <th>Comment Paid</th>
+          <th>Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for receipt in receipts %}
+        <tr class='clickable-row' data-href="{% url 'edit_receipt' invoice.pk receipt.pk %}">
+          <td>{{ forloop.counter }}</td>
+          <td>{{ receipt.amount_paid | intcomma }}</td>
+          <td>{{ receipt.date_paid }}</td>
+          <td>{{ receipt.comment }}</td>
+          <td class="row text-center">
+            <a class="col btn" href="{% url 'edit_receipt' invoice.pk receipt.pk %}"><i class="fa fa-edit text-primary"></i></a>
+            <a class="col btn" href="{% url 'delete_receipt' invoice.pk receipt.pk %}"><i class="fa fa-trash-alt text-primary"></i></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

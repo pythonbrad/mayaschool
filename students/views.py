@@ -16,10 +16,12 @@ def index(request):
 
 @login_required
 def details(request, pk):
+    obj = get_object_or_404(Student, pk=pk)
     return render(request, 'students/student_details.html', {
-        'student': get_object_or_404(Student, pk=pk),
+        'student': obj,
         'title': 'Student Details',
         'current_page': 'student',
+        'payments': obj.invoice_set.all(),
     })
 
 

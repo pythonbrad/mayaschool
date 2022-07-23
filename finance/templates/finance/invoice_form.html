@@ -1,0 +1,36 @@
+{% extends 'object_form.html' %}
+{% load humanize %}
+
+{% block extra %}
+{{items.management_form }}
+<div class="col-sm-6 callout callout-info">
+  {{ items.management_form }}
+  <div class="text-center">FEE STRUCTURE</div>
+  <div class="row">
+    <div class="col"><strong>Fee Type</strong></div>
+    <div class="col"><strong>Amount</strong></div>
+  </div>
+  {% for item in items %}
+  <div class="form-group row items-group">
+    {{ item.id.as_hidden }}
+    <div class="col">{{ item.description }}</div>
+    <div class="col">{{ item.amount }}</div>
+    <div class="col-1">
+      <div onclick="remove(this)">
+        {{ item.DELETE.as_hidden }}
+        <div class="btn btn-danger"><i class="fa fa-trash"></i></div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+  function remove(e) {
+    $(e).find('input').val(1);
+    $(e).parent().parent().hide();
+  }
+</script>
+{% endblock %}

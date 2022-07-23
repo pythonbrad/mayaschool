@@ -1,0 +1,20 @@
+{% extends 'object_form.html' %}
+{% load humanize %}
+
+{% block extra %}
+<div class="col-3">
+  <div class="alert alert-info" role="alert">
+    <h3>INVOICE</h3>
+    <p>{{invoice | upper}}</p>
+    <hr>
+    <ul>
+      <li>Term: {{ invoice.term }}</li>
+      <li>Class: {{ invoice.student.get_current_class.subclass }}</li>
+      <li>Total Amount Payable: {{ invoice.total_amount_payable | intcomma }}
+      </li>
+      <li>Total Amount Paid: {{ invoice.total_amount_paid | intcomma }}</li>
+      <li><strong>Balance: {{ invoice.balance | intcomma }}</strong></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

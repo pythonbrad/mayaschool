@@ -27,13 +27,13 @@ class Invoice(models.Model):
         paid = self.total_amount_paid()
         return payable - paid
 
-    def amount_payable(self):
-        items = InvoiceItem.objects.filter(invoice=self).aggregate(total_amount=Sum('amount'))
-        return items.total_amount
+    def total_amount_payable(self):
+        items = self.invoiceitem_set.aggregate(amount=Sum('amount'))
+        return items['amount'] or 0
 
     def total_amount_paid(self):
-        receipts = Receipt.objects.filter(invoice=self).aggregate(amount_paid=Sum('amount_paid'))
-        return receipts.amount_paid
+        receipts = self.receipt_set.aggregate(amount=Sum('amount_paid'))
+        return receipts['amount'] or 0
 
 
 class InvoiceItem(models.Model):

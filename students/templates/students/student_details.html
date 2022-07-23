@@ -1,5 +1,6 @@
 {% extends 'index.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block content %}
 <div class="card container-fluid">
@@ -66,16 +67,16 @@
               <th>For</th>
               <th>Amount Payable</th>
               <th>Amount Paid</th>
-              <th>balance</th>
+              <th>Expected Balance</th>
             </tr>
           </thead>
           <tbody>
             {% for payment in payments %}
               <tr class='clickable-row' data-href="{% url 'invoice_details' payment.pk %}">
                 <td>{{ payment.term }}</td>
-                <td>{{ payment.total_amount_payable }}</td>
-                <td>{{ payment.total_amount_paid }}</td>
-                <td>{{ payment.balance }}</td>
+                <td>{{ payment.total_amount_payable | intcomma }}</td>
+                <td>{{ payment.total_amount_paid | intcomma }}</td>
+                <td>{{ payment.balance | intcomma }}</td>
               </tr>
             {% endfor %}
           </tbody>
