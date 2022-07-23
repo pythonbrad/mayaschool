@@ -43,7 +43,7 @@
             <tr>
               <td>{{ forloop.counter }} </td>
               <td>{{ item.description }} </td>
-              <td>{{ item.amount }} </td>
+              <td>{{ item.amount | intcomma }} </td>
             </tr>
             {% endfor %}
           </tbody>
@@ -51,12 +51,12 @@
             <tr>
               <td></td>
               <td>Total Amount Payable</td>
-              <td>{{ invoice.total_amount_payable | intcomma}}</td>
+              <td>{{ invoice.total_amount_payable | intcomma }}</td>
             </tr>
             <tr>
               <td></td>
               <td>Total Amount Paid</td>
-              <td>{{ invoice.total_amount_paid | intcomma}}</td>
+              <td>{{ invoice.total_amount_paid | intcomma }}</td>
             </tr>
           </tfoot>
         </table>
@@ -79,7 +79,7 @@
         {% for receipt in receipts %}
         <tr class='clickable-row' data-href="{% url 'edit_receipt' invoice.pk receipt.pk %}">
           <td>{{ forloop.counter }}</td>
-          <td>{{ receipt.amount_paid }}</td>
+          <td>{{ receipt.amount_paid | intcomma }}</td>
           <td>{{ receipt.date_paid }}</td>
           <td>{{ receipt.comment }}</td>
           <td class="row text-center">
