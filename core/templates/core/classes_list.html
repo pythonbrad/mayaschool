@@ -20,8 +20,8 @@
               <td>{{ forloop.counter }}</td>
               <td>{{ classe.name }}</td>
               <td class="row text-center">
-                <a class="col" href="{% url 'edit_class' classe.pk %}"><i class="fa fa-edit"></i></a>
-                <a class="col" href="{% url 'delete_class' classe.pk %}"><i class="fa fa-trash-alt"></i></a>
+                <a class="col btn" href="{% url 'edit_class' classe.pk %}"><i class="fa fa-edit text-primary"></i></a>
+                <a class="col btn" href="{% url 'delete_class' classe.pk %}"><i class="fa fa-trash-alt text-primary"></i></a>
               </td>
           </tr>
           {% endfor %}

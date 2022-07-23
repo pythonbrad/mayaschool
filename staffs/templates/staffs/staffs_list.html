@@ -31,9 +31,9 @@
                 <td>{{ staff.person.mobile_number }}</td>
                 <td>{{ staff.person.get_status_display }}</td>
                 <td class="row text-center">
-                  <a class="col" href="{% url 'staff_details' staff.pk %}"><i class="fa fa-eye"></i></a>
-                  <a class="col" href="{% url 'edit_staff' staff.pk %}"><i class="fa fa-edit"></i></a>
-                  <a class="col" href="{% url 'delete_staff' staff.pk %}"><i class="fa fa-trash-alt"></i></a>
+                  <a class="col btn" href="{% url 'staff_details' staff.pk %}"><i class="fa fa-eye text-primary"></i></a>
+                  <a class="col btn" href="{% url 'edit_staff' staff.pk %}"><i class="fa fa-edit text-primary"></i></a>
+                  <a class="col btn" href="{% url 'delete_staff' staff.pk %}"><i class="fa fa-trash-alt text-primary"></i></a>
                 </td>
             </tr>
             {% endfor %}
