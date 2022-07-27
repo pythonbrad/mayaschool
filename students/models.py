@@ -6,10 +6,11 @@ class Student(models.Model):
     """Student."""
 
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
+    guardian = models.CharField(max_length=255)
     tag = 'S'
 
     def __str__(self):
-        return f"{self.person.surname} {self.person.firstname} {self.person.other_name} ({self.person.matricule})"
+        return f"{self.person.lastname} {self.person.firstname} {self.person.other_name} ({self.person.matricule})"
 
     def save(self, *args, **kwargs):
         """Save."""

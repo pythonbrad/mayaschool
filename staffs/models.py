@@ -6,6 +6,7 @@ class Staff(models.Model):
     """Staff."""
 
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
+    diploma = models.CharField(blank=True, max_length=255)
     tag = 'P'
 
 

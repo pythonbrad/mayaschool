@@ -9,3 +9,4 @@ def get_subclass_choices():
 
 class StudentForm(PersonForm):
     current_class = forms.ChoiceField(choices=get_subclass_choices)
+    guardian_name = forms.CharField(max_length=255)

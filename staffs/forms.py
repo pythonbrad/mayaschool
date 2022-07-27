@@ -1,5 +1,6 @@
 from core.forms import PersonForm
+from django import forms
 
 
 class StaffForm(PersonForm):
-    pass
+    diploma = forms.CharField(max_length=255)

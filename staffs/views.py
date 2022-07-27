@@ -29,7 +29,7 @@ def create(request):
         form = StaffForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            Staff.objects.create(person=form.instance)
+            Staff.objects.create(person=form.instance, diploma=form.cleaned_data['diploma'])
             return redirect('staffs')
         else:
             pass

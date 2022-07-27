@@ -31,7 +31,7 @@ def create(request):
         form = StudentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            Student.objects.create(person=form.instance)
+            Student.objects.create(person=form.instance, guardian=form.cleaned_data['guardian_name'])
             ClassStudent.objects.create(
                 subclass=SubClass.objects.get(pk=form.cleaned_data['current_class']),
                 student=form.instance.student
@@ -56,7 +56,13 @@ def edit(request, pk):
         if form.is_valid():
             form.save()
             current_class = obj.get_current_class()
-            current_class.subclass = SubClass.objects.get(pk=form.cleaned_data['current_class'])
+            if current_class.session == request.current_session:
+                current_class.subclass = SubClass.objects.get(pk=form.cleaned_data['current_class'])
+            else:
+                ClassStudent.objects.create(
+                    subclass=SubClass.objects.get(pk=form.cleaned_data['current_class']),
+                    student=form.instance.student
+                )
             current_class.save()
             return redirect('students')
         else:

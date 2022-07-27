@@ -21,7 +21,7 @@
           <div class="row mb-2">
               <img src="{% if student.person.passport %}{{ student.person.passport.url }}{% else %}{% static 'vendor/adminlte/img/avatar.png' %}{% endif %}" class="float-left rounded-circle mr-3" style="width: 120px; height: 120px;">
             <div class="float-right">
-              <h4>{{ student.person.surname }}</h4>
+              <h4>{{ student.person.lastname }}</h4>
               <h4>{{ student.person.firstname }}</h4>
               <h4>{{ student.person.other_name }}</h4>
               <h4>{{ student.person.matricule }}</h4>
@@ -39,6 +39,11 @@
             <tr>
               <th>Date of Birth</th>
               <td>{{ student.person.date_of_birth }}</td>
+            </tr>
+
+            <tr>
+              <th>Guardian Name</th>
+              <td>{{ student.guardian }}</td>
             </tr>
 
             <tr>

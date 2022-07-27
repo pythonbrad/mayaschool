@@ -20,7 +20,7 @@
           <div class="row mb-2">
               <img src="{% if staff.person.passport %}{{ staff.person.passport.url }}{% else %}{% static 'vendor/adminlte/img/avatar4.png' %}{% endif %}" class="float-left rounded-circle mr-3" style="width: 120px; height: 120px;">
             <div class="float-right">
-              <h4>{{ staff.person.surname }}</h4>
+              <h4>{{ staff.person.lastname }}</h4>
               <h4>{{ staff.person.firstname }}</h4>
               <h4>{{ staff.person.other_name }}</h4>
               <h4>{{ staff.person.matricule }}</h4>
@@ -41,8 +41,13 @@
             </tr>
 
             <tr>
-              <th>Parent Mobile Number</th>
+              <th>Mobile Number</th>
               <td>{{ staff.person.mobile_number }}</td>
+            </tr>
+
+            <tr>
+              <th>Diploma</th>
+              <td>{{ staff.diploma }}</td>
             </tr>
 
             <tr>

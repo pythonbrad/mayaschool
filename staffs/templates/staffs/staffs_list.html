@@ -14,6 +14,7 @@
             <th>Fullname</th>
             <th>Registration Number</th>
             <th>Is teacher?</th>
+            <th>Diploma</th>
             <th>Gender</th>
             <th>Mobile Number</th>
             <th>Status</th>
@@ -24,9 +25,10 @@
             {% for staff in staffs %}
             <tr class='clickable-row' data-href="{% url 'staff_details' staff.pk %}">
                 <td>{{ forloop.counter }}</td>
-                <td>{{ staff.person.surname }} {{ staff.person.firstname }} {{ staff.person.other_name }}</td>
+                <td>{{ staff.person.lastname }} {{ staff.person.firstname }} {{ staff.person.other_name }}</td>
                 <td>{{ staff.person.matricule }}</td>
                 <td>{% if staff.is_teacher %}Yes{% else %}No{% endif %}</td>
+                <td>{{ staff.diploma }}</td>
                 <td>{{ staff.person.get_gender_display }}</td>
                 <td>{{ staff.person.mobile_number }}</td>
                 <td>{{ staff.person.get_status_display }}</td>

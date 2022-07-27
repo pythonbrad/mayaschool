@@ -140,7 +140,7 @@ class Person(models.Model):
         max_length=10, choices=STATUS_CHOICES, default="active"
     )
     matricule = models.CharField(max_length=16, unique=True)
-    surname = models.CharField(max_length=200)
+    lastname = models.CharField(max_length=200)
     firstname = models.CharField(max_length=200)
     other_name = models.CharField(max_length=200, blank=True)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default="male")
@@ -157,11 +157,10 @@ class Person(models.Model):
     address = models.TextField(blank=True)
     others = models.TextField(blank=True)
     passport = models.ImageField(blank=True, upload_to="students/passports/")
-    diploma = models.CharField(blank=True, max_length=255)
     email = models.EmailField(blank=True)
 
     class Meta:
-        ordering = ["surname", "firstname", "other_name"]
+        ordering = ["lastname", "firstname", "other_name"]
 
     def generate_matricule(self, obj):
         """Generate matricule."""
