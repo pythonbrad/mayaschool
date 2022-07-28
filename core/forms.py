@@ -1,5 +1,5 @@
 from django import forms
-from .models import Class, SubClass, AcademicSession, AcademicTerm, Subject, Person
+from .models import Class, SubClass, AcademicSession, AcademicTerm, Subject, Person, SystemConfig
 
 
 class Form(forms.ModelForm):
@@ -51,3 +51,10 @@ class PersonForm(Form):
     class Meta:
         model = Person
         exclude = ['joined_date', 'matricule']
+
+
+class SystemConfigForm(Form):
+
+    class Meta:
+        model = SystemConfig
+        exclude = []

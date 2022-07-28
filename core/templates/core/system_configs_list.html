@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container-fluid card">
+  <div class="card-header">
+    <a class="btn btn-primary" href="{% url 'new_system_config' %}"><i class="fas fa-plus"></i> New System Config</a>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table id="system_configs_table" class="table table-bordered table-hover" data-page-length='100'>
+        <thead class="thead-light">
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for system_config in system_configs %}
+          <tr class='clickable-row' data-href="{% url 'edit_system_config' system_config.pk %}">
+              <td>{{ system_config.key }}</td>
+              <td>{{ system_config.value }}</td>
+              <td class="row text-center">
+                <a class="col btn" href="{% url 'edit_system_config' system_config.pk %}"><i class="fa fa-edit text-primary"></i></a>
+                <a class="col btn" href="{% url 'delete_system_config' system_config.pk %}"><i class="fa fa-trash-alt text-primary"></i></a>
+              </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    $('#system_configs_table').DataTable({});
+</script>
+{% endblock %}

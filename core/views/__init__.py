@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from staffs.models import Staff
-from core.models import SubClass
+from ..models import SubClass
 from django.contrib.auth.decorators import login_required
-from . import classe, session, subclass, subject, term
+from . import classe, session, subclass, subject, term, system_config
 
 
 __all__ = ['classe', 'session', 'subclass', 'subject', 'term']

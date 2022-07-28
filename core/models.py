@@ -8,7 +8,7 @@ import string
 class SystemConfig(models.Model):
     """System configuration."""
 
-    key = models.SlugField()
+    key = models.SlugField(unique=True)
     value = models.CharField(max_length=200)
 
     def __str__(self):

@@ -107,12 +107,14 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="#" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;
                     <i class="far fa-edit nav-icon"></i>
                     <p>Note</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;
                     <i class="fas fa-file-alt nav-icon"></i>
                     <p>Report Card</p>
                   </a>
@@ -121,47 +123,60 @@
             </li>
             <li class="nav-item {% if 'setting' in current_page %}menu-is-opening menu-open{% endif %}">
               <a href="#" class="nav-link {% if 'setting' in current_page %}active{% endif %}">
-                <i class="nav-icon fas fa-pencil-ruler"></i>
+                <i class="nav-icon fas fa-tools"></i>
                 <p>Settings <i class="right fas fa-angle-left"></i></p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{% url 'sessions' %}" class="nav-link {% if '.session' in current_page %}active{% endif %}">
-                    <i class="fas fa-image nav-icon"></i>
+                    &nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-calendar nav-icon"></i>
                     <p>Session</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{% url 'terms' %}" class="nav-link {% if '.term' in current_page %}active{% endif %}">
-                    <i class="fas fa-image nav-icon"></i>
+                    &nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-calendar-week nav-icon"></i>
                     <p>Term</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{% url 'subjects' %}" class="nav-link {% if '.subject' in current_page %}active{% endif %}">
+                    &nbsp;&nbsp;&nbsp;
                     <i class="fas fa-book-open nav-icon"></i>
                     <p>Subject</p>
                   </a>
                 </li>
                 <li class="nav-item {% if '.class' in current_page %}menu-is-opening menu-open{% endif %}">
                   <a href="#" class="nav-link {% if '.class' in current_page %}active{% endif %}">
+                    &nbsp;&nbsp;&nbsp;
                     <i class="nav-icon fas fa-chalkboard"></i>
                     <p>Class <i class="right fas fa-angle-left"></i></p>
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{% url 'classes' %}" class="nav-link">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <i class="fas fa-square nav-icon"></i>
                         <p>Parent</p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a href="{% url 'subclasses' %}" class="nav-link">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <i class="fas fa-sitemap nav-icon"></i>
                         <p>Child</p>
                       </a>
                     </li>
                   </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'system_configs' %}" class="nav-link {% if '.system_config' in current_page %}active{% endif %}">
+                    &nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-database nav-icon"></i>
+                    <p>System</p>
+                  </a>
                 </li>
               </ul>
             </li>
@@ -173,12 +188,14 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="#" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;
                     <i class="fas fa-file-import nav-icon"></i>
                     <p>Import data</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
+                    &nbsp;&nbsp;&nbsp;
                     <i class="fas fa-file-export nav-icon"></i>
                     <p>Export data</p>
                   </a>

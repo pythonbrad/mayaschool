@@ -25,4 +25,8 @@ urlpatterns = [
     path('subjects/create', views.subject.create, name='new_subject'),
     path('subjects/<int:pk>/edit', views.subject.edit, name='edit_subject'),
     path('subjects/<int:pk>/delete', views.subject.delete, name='delete_subject'),
+    path('system_configs', views.system_config.index, name='system_configs'),
+    path('system_configs/create', views.system_config.create, name='new_system_config'),
+    path('system_configs/<int:pk>/edit', views.system_config.edit, name='edit_system_config'),
+    path('system_configs/<int:pk>/delete', views.system_config.delete, name='delete_system_config'),
 ]
