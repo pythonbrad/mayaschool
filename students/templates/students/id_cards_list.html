@@ -1,0 +1,119 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid card">
+  <div class="card-header row" id="filter">
+    <form class="col">
+      <div class="row form-group">
+        <label class="col-3" for="class">Class:</label>
+        <select class="form-control col" id="class" name="class" onchange="load_subclass()">
+          <option value="">---</option>
+        </select>
+      </div>
+      <div class="row form-group">
+        <label class="col-3" for="subclass">SubClass:</label>
+        <select class="form-control col" id="subclass" name="subclass">
+          <option value="">---</option>
+        </select>
+      </div>
+      <div class="row">
+        <button class="form-control btn btn-success">Sort</button>
+      </div>
+    </form>
+  </div>
+  <div class="card-body">
+    {% for class_student in class_students %}
+      {% if forloop.counter0|divisibleby:2 or forloop.first %}
+        {% if not forloop.first %}
+    </div>
+        {% endif %}
+    <div class="row">
+      {% endif %}
+      <div class="card col">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-sm-2">
+              <img src="{% static request.system_config.school_logo|default:'img/logo.png' %}" width="100%">
+            </div>
+            <div class="col">
+              <div class="row" style="font-weight: bold; justify-content: center;">{{ request.system_config.school_name|default:"SCHOOL_NAME" }}</div>
+              <div class="row" style="justify-content: center;">{{ request.system_config.school_address|default:"SCHOOL_ADDRESS" }}</div>
+              <div class="row" style="justify-content: space-around;">
+                <div class="" style="font-weight: bold;">IDENTITY CARD</div>
+                <div class="" style="font-weight: bold;">{{ request.current_session }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="{% if class_student.student.person.passport %}{{ class_student.student.person.passport.url }}{% else %}{% static 'vendor/adminlte/img/avatar.png' %}{% endif %}" width="100%">
+            </div>
+            <div class="col">
+              <div class="col" style="font-weight: bold;">
+                Student ID:
+              </div>
+              <div class="col" style="font-weight: bold;">
+                Student Name:
+              </div>
+              <div class="col" style="font-weight: bold;">
+                Class:
+              </div>
+              <div class="col" style="font-weight: bold;">
+                Parent/Guardian:
+              </div>
+              <div class="col" style="font-weight: bold;">
+                Emergency Call:
+              </div>
+            </div>
+            <div class="col">
+              <div class="col">
+                {{ class_student.student.person.matricule }}
+              </div>
+              <div class="col">
+                {{ class_student.student.person.firstname }} {{ class_student.student.person.lastname }}
+              </div>
+              <div class="col">
+                {{ class_student.student.get_current_class.subclass }}
+              </div>
+              <div class="col">
+                {{ class_student.student.guardian }}
+              </div>
+              <div class="col">
+                {{ class_student.student.person.mobile_number }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+  options = {{ options|safe }};
+  var classes = Object.entries(options);
+  classes.forEach(function (item) {
+    $('#class').append("<option value='" + item[0] + "'>" + item[1]["name"] + "</option>");
+  });
+  function load_subclass() {
+    $('#subclass').html("<option value=''>---</option>");
+    var classe = $('#class').val();
+    var subclasses = Object.entries(
+      (options[classe] || {})['classes'] || {}
+    );
+    subclasses.forEach(function (item) {
+      $('#subclass').append("<option value='" + item[0] + "'>" + item[1] + "</option>");
+    });
+  }
+</script>
+<style type="text/css">
+  @media print {
+    #filter {
+      display: none;
+    }
+  }
+</style>
+{% endblock %}

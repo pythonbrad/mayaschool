@@ -1,4 +1,4 @@
-from core.models import SubClass
+from core.models import SubClass, Class
 from .models import Student, ClassStudent
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -88,4 +88,33 @@ def delete(request, pk):
         'title': 'Delete student',
         'object': obj,
         'current_page': 'student',
+    })
+
+
+@login_required
+def generate_id_cards(request):
+    data = request.current_session.classstudent_set.filter()
+    options = {
+        i.pk: {
+            'name': i.name,
+            'classes': {
+                ii.pk: ii.name for ii in i.subclass_set.all()
+            },
+        } for i in Class.objects.all()
+    }
+    if request.GET:
+        classe_id = request.GET.get('class', '')
+        subclass_id = request.GET.get('subclass', '')
+        if subclass_id.isdigit():
+            data = data.filter(subclass_id=subclass_id)
+        elif classe_id.isdigit():
+            data = data.filter(subclass__parent_id=classe_id)
+        else:
+            pass
+
+    return render(request, 'students/id_cards_list.html', {
+        'title': 'ID Cards',
+        'class_students': data,
+        'current_page': 'student',
+        'options': options,
     })
