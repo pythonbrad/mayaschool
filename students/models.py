@@ -50,6 +50,9 @@ class Student(models.Model):
         )).replace(' ', '0')
         self.save(update_fields=['matricule'])
 
+    def get_current_class(self):
+        return ClassStudent.objects.get(student=self, session=AcademicSession.get_current())
+
     def save(self, *args, **kwargs):
         """Save."""
         super().save(*args, **kwargs)
