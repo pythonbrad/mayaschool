@@ -119,8 +119,8 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link {% if current_page == 'settings' %}active{% endif %}">
+            <li class="nav-item {% if 'setting' in current_page %}menu-is-opening menu-open{% endif %}">
+              <a href="#" class="nav-link {% if 'setting' in current_page %}active{% endif %}">
                 <i class="nav-icon fas fa-pencil-ruler"></i>
                 <p>Settings <i class="right fas fa-angle-left"></i></p>
               </a>
@@ -143,14 +143,14 @@
                     <p>Subject</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
+                <li class="nav-item {% if '.class' in current_page %}menu-is-opening menu-open{% endif %}">
+                  <a href="#" class="nav-link {% if '.class' in current_page %}active{% endif %}">
                     <i class="nav-icon fas fa-chalkboard"></i>
                     <p>Class <i class="right fas fa-angle-left"></i></p>
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="#" class="nav-link">
+                      <a href="{% url 'classes' %}" class="nav-link">
                         <i class="fas fa-square nav-icon"></i>
                         <p>Parent</p>
                       </a>
