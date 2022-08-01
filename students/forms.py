@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import gettext as _
 from core.models import SubClass
 from core.forms import PersonForm
 
@@ -8,5 +9,5 @@ def get_subclass_choices():
 
 
 class StudentForm(PersonForm):
-    current_class = forms.ChoiceField(choices=get_subclass_choices)
-    guardian_name = forms.CharField(max_length=255)
+    current_class = forms.ChoiceField(choices=get_subclass_choices, label=_('current_class'))
+    guardian_name = forms.CharField(max_length=255, label=_('guardian'))

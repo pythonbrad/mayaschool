@@ -4,9 +4,9 @@
 {% block content %}
 <div class="card">
   <div class="card-header">
-    <a class="btn btn-success" href="{% url 'new_receipt' invoice.pk %}">Add new receipt</a>
+    <a class="btn btn-success" href="{% url 'new_receipt' invoice.pk %}">{{ _("add_receipt") | capfirst }}</a>
     <div class="card-tools">
-      <a href="#" class="btn btn-tool">Print</a>
+      <a href="#" class="btn btn-tool">{{ _("print") | capfirst }}</a>
       <a href="{% url 'edit_invoice' invoice.pk %}" class="btn btn-tool">
         <i class="fas fa-edit"></i>
       </a>
@@ -22,20 +22,20 @@
         <h5>{{ invoice.session }} </h5>
         <h5>{{ invoice.term }} </h5>
         <h5>{{ invoice.student.get_current_class.subclass }} </h5>
-        <h6>Status: {{ invoice.get_status_display }} </h6>
+        <h6>{{ _("status") | capfirst }}: {{ invoice.get_status_display }} </h6>
         <hr>
         <div>
-          <h4>Expected Balance: {{ invoice.balance | intcomma }}</h4>
+          <h4>{{ _("expected_balance") | capfirst }}: {{ invoice.balance | intcomma }}</h4>
         </div>
       </div>
       <div class="col-sm-8">
         <table class="table table-sm table-bordered">
-          Invoice Breakdown</br>
+          {{ _("invoice_breakdown") | capfirst }}</br>
           <thead class="thead-light">
             <tr>
-              <th>S/N</th>
-              <th>Description</th>
-              <th>Amount</th>
+              <th>{{ _("serial_number") | capfirst }}</th>
+              <th>{{ _("description") | capfirst }}</th>
+              <th>{{ _("amount") | capfirst }}</th>
             </tr>
           </thead>
           <tbody>
@@ -50,12 +50,12 @@
           <tfoot>
             <tr>
               <td></td>
-              <td>Total Amount Payable</td>
+              <td>{{ _("total_amount_payable") | capfirst }}</td>
               <td>{{ invoice.total_amount_payable | intcomma }}</td>
             </tr>
             <tr>
               <td></td>
-              <td>Total Amount Paid</td>
+              <td>{{ _("total_amount_paid") | capfirst }}</td>
               <td>{{ invoice.total_amount_paid | intcomma }}</td>
             </tr>
           </tfoot>
@@ -64,15 +64,15 @@
     </div>
   </div>
   <div class="card-footer">
-    <h5>Payment History</h5>
+    <h5>{{ _("payments_history") | capfirst }}</h5>
     <table class="table table-bordered table-sm">
       <thead class="thead-light">
         <tr>
-          <th>S/N</th>
-          <th>Amount Paid</th>
-          <th>Date Paid</th>
-          <th>Comment Paid</th>
-          <th>Option</th>
+          <th>{{ _("serial_number") | capfirst }}</th>
+          <th>{{ _("amount_paid") | capfirst }}</th>
+          <th>{{ _("payment_date") | capfirst }}</th>
+          <th>{{ _("payment_comment") | capfirst }}</th>
+          <th>{{ _("option") | capfirst }}</th>
         </tr>
       </thead>
       <tbody>

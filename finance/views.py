@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.translation import gettext as _
 from .models import Invoice, Receipt
 from .forms import InvoiceForm, ReceiptForm, InvoiceItemFormSet
 
@@ -7,7 +8,7 @@ from .forms import InvoiceForm, ReceiptForm, InvoiceItemFormSet
 @login_required
 def invoices(request):
     return render(request, 'finance/invoices_list.html', {
-        'title': 'Invoices',
+        'title': _('invoices_list').capitalize(),
         'current_page': 'invoice',
         'invoices': request.current_session.invoice_set.all()
     })
@@ -20,7 +21,7 @@ def invoice_details(request, pk):
         'invoice': obj,
         'items': obj.invoiceitem_set.all(),
         'receipts': obj.receipt_set.all(),
-        'title': 'Invoice Details',
+        'title': _('invoice_details').capitalize(),
         'current_page': 'invoice',
     })
 
@@ -41,7 +42,7 @@ def create_invoice(request):
         invoice_form = InvoiceForm()
         invoice_items_form = InvoiceItemFormSet()
     return render(request, 'finance/invoice_form.html', {
-        'title': 'New Invoice',
+        'title': _('add_invoice').capitalize(),
         'current_page': 'invoice',
         'form': invoice_form,
         'items': invoice_items_form,
@@ -64,7 +65,7 @@ def edit_invoice(request, pk):
         invoice_form = InvoiceForm(instance=obj)
         invoice_items_form = InvoiceItemFormSet(instance=obj)
     return render(request, 'finance/invoice_form.html', {
-        'title': 'Edit Invoice',
+        'title': _('edit_invoice').capitalize(),
         'current_page': 'invoice',
         'form': invoice_form,
         'items': invoice_items_form
@@ -80,7 +81,7 @@ def delete_invoice(request, pk):
     else:
         pass
     return render(request, 'delete_object.html', {
-        'title': 'Delete invoice',
+        'title': _('delete_invoice').capitalize(),
         'object': obj,
         'current_page': 'invoice',
     })
@@ -98,7 +99,7 @@ def create_receipt(request, pk):
     else:
         form = ReceiptForm()
     return render(request, 'finance/receipt_form.html', {
-        'title': 'New Receipt',
+        'title': _('add_receipt').capitalize(),
         'invoice': get_object_or_404(Invoice, pk=pk),
         'current_page': 'invoice',
         'form': form
@@ -118,7 +119,7 @@ def edit_receipt(request, id, pk):
     else:
         form = ReceiptForm(instance=obj)
     return render(request, 'finance/receipt_form.html', {
-        'title': 'Edit Receipt',
+        'title': _('edit_receipt').capitalize(),
         'invoice': get_object_or_404(Invoice, pk=id),
         'current_page': 'invoice',
         'form': form
@@ -134,7 +135,7 @@ def delete_receipt(request, id, pk):
     else:
         pass
     return render(request, 'delete_object.html', {
-        'title': 'Delete receipt',
+        'title': _('delete_receipt').capitalize(),
         'object': obj,
         'current_page': 'receipt',
     })

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
-    <title>MayaSchool | {{ title | default:"Welcome" }}</title>
+    <title>MayaSchool | {{ title | default:_("welcome") | capfirst }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">

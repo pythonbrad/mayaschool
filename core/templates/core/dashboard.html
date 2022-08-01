@@ -9,12 +9,12 @@
         <div class="small-box bg-info clickable-row" data-href="{% url 'students' %}">
           <div class="inner">
             <h3>{{ nb_students | intcomma }}</h3>
-            <p>Students</p>
+            <p>{{ _("students") | capfirst }}</p>
           </div>
           <div class="icon">
             <i class="fas fa-user-graduate"></i>
           </div>
-          <span class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></span>
+          <span class="small-box-footer">{{ _("more_info") | capfirst }} <i class="fas fa-arrow-circle-right"></i></span>
         </div>
       </div>
       <!-- ./col -->
@@ -23,12 +23,12 @@
         <div class="small-box bg-success clickable-row" data-href="{% url 'staffs' %}">
           <div class="inner">
             <h3>{{ nb_staffs | intcomma }}</h3>
-            <p>Staffs</p>
+            <p>{{ _("staffs") | capfirst }}</p>
           </div>
           <div class="icon">
             <i class="fas fa-user-tie"></i>
           </div>
-          <span class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></span>
+          <span class="small-box-footer">{{ _("more_info") | capfirst }} <i class="fas fa-arrow-circle-right"></i></span>
         </div>
       </div>
       <!-- ./col -->
@@ -38,12 +38,12 @@
           <div class="inner">
             <h3>{{ nb_classes | intcomma }}</h3>
 
-            <p>Classes</p>
+            <p>{{ _("classes") | capfirst }}</p>
           </div>
           <div class="icon">
             <i class="fas fa-chalkboard"></i>
           </div>
-          <span class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></span>
+          <span class="small-box-footer">{{ _("more_info") | capfirst }} <i class="fas fa-arrow-circle-right"></i></span>
         </div>
       </div>
       <!-- ./col -->
@@ -51,14 +51,14 @@
         <!-- small box -->
         <div class="small-box bg-danger clickable-row" data-href="{% url 'invoices' %}">
           <div class="inner">
-            <h3><span>{{ total_incomes | intword }}</span> Francs</h3>
+            <h3><span>{{ total_incomes | intword }}</span> {{ request.system_config.currency|default:"CURRENCY" }}</h3>
 
-            <p>Incomes</p>
+            <p>{{ _("incomes") | capfirst }}</p>
           </div>
           <div class="icon">
             <i class="fas fa-dollar-sign"></i>
           </div>
-          <span class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></span>
+          <span class="small-box-footer">{{ _("more_info") | capfirst }} <i class="fas fa-arrow-circle-right"></i></span>
         </div>
       </div>
       <!-- ./col -->

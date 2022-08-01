@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.translation import gettext as _
 from ..models import Class
 from ..forms import ClassForm
 
@@ -8,7 +9,7 @@ from ..forms import ClassForm
 def index(request):
     classes = Class.objects.all()
     return render(request, 'core/classes_list.html', {
-        'title': 'Classes',
+        'title': _('classes_list').capitalize(),
         'current_page': 'setting.class.parent',
         'classes': classes,
     })
@@ -26,7 +27,7 @@ def create(request):
     else:
         form = ClassForm()
     return render(request, 'object_form.html', {
-        'title': 'New class',
+        'title': _('add_class').capitalize(),
         'current_page': 'setting.class.parent',
         'form': form
     })
@@ -45,7 +46,7 @@ def edit(request, pk):
     else:
         form = ClassForm(instance=obj)
     return render(request, 'object_form.html', {
-        'title': 'Edit class',
+        'title': _('edit_class').capitalize(),
         'current_page': 'setting.class.parent',
         'form': form,
     })
@@ -60,7 +61,7 @@ def delete(request, pk):
     else:
         pass
     return render(request, 'delete_object.html', {
-        'title': 'Delete class',
+        'title': _('delete_class').capitalize(),
         'object': obj,
         'current_page': 'setting.class.parent',
     })

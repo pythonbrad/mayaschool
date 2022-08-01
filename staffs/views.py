@@ -2,13 +2,14 @@ from core.models import SubClass
 from .models import Staff
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.translation import gettext as _
 from .forms import StaffForm
 
 
 @login_required
 def index(request):
     return render(request, 'staffs/staffs_list.html', {
-        'title': 'Staffs',
+        'title': _('staffs_list').capitalize(),
         'current_page': 'staff',
         'staffs': Staff.objects.all()
     })
@@ -18,7 +19,7 @@ def index(request):
 def details(request, pk):
     return render(request, 'staffs/staff_details.html', {
         'staff': get_object_or_404(Staff, pk=pk),
-        'title': 'Staff Details',
+        'title': _('staff_details').capitalize(),
         'current_page': 'staff',
     })
 
@@ -36,7 +37,7 @@ def create(request):
     else:
         form = StaffForm()
     return render(request, 'object_form.html', {
-        'title': 'New Staff',
+        'title': _('add_staff').capitalize(),
         'current_page': 'staff',
         'form': form
     })
@@ -61,7 +62,7 @@ def edit(request, pk):
             },
             instance=obj.person)
     return render(request, 'object_form.html', {
-        'title': 'Edit Staff',
+        'title': _('edit_staff').capitalize(),
         'current_page': 'staff',
         'form': form
     })
@@ -76,7 +77,7 @@ def delete(request, pk):
     else:
         pass
     return render(request, 'delete_object.html', {
-        'title': 'Delete staff',
+        'title': _('delete_staff').capitalize(),
         'object': obj,
         'current_page': 'staff',
     })

@@ -4,21 +4,21 @@
 {% block content %}
 <div class="container-fluid card">
   <div class="card-header">
-    <a class="btn btn-primary" href="{% url 'new_invoice' %}"><i class="fas fa-plus"></i> New Invoice</a>
-    <a class="btn btn-primary" href="{% url '#"><i class="fas fa-upload"></i> Bulk Invoice</a>
+    <a class="btn btn-primary" href="{% url 'new_invoice' %}"><i class="fas fa-plus"></i> {{ _("add_invoice") | capfirst }}</a>
+    <a class="btn btn-primary" href="#"><i class="fas fa-upload"></i> {{ _("bulk_invoice") | capfirst }}</a>
   </div>
   <div class="card-body">
     <div class="table-responsive">
       <table id="invoicetable" class="table table-bordered table-hover">
         <thead class="thead-light">
           <tr>
-            <th>S/N</th>
-            <th>Invoice</th>
-            <th>Term</th>
-            <th>Total Payable</th>
-            <th>Total Paid</th>
-            <th>Balance</th>
-            <th>Option</th>
+            <th>{{ _("serial_number") | capfirst }}</th>
+            <th>{{ _("invoice") | capfirst }}</th>
+            <th>{{ _("term") | capfirst }}</th>
+            <th>{{ _("total_payable") | capfirst }}</th>
+            <th>{{ _("total_paid") | capfirst }}</th>
+            <th>{{ _("balance") | capfirst }}</th>
+            <th>{{ _("option") | capfirst }}</th>
           </tr>
         </thead>
         <tbody>

@@ -2,23 +2,23 @@
 {% block content %}
 <div class="container-fluid card">
   <div class="card-header">
-    <a class="btn btn-primary" href="{% url 'new_student' %}"><i class="fas fa-plus"></i> New student</a>
-    <a class="btn btn-primary" href="#"><i class="fas fa-upload"></i> Upload students</a>
-    <a class="btn btn-success" href="{% url 'id_cards' %}"><i class="fas fa-id-card"></i> Generate ID card</a>
+    <a class="btn btn-primary" href="{% url 'new_student' %}"><i class="fas fa-plus"></i> {{ _("add_student") | capfirst }}</a>
+    <a class="btn btn-primary" href="#"><i class="fas fa-upload"></i> {{ _("bulk_student") | capfirst }}</a>
+    <a class="btn btn-success" href="{% url 'id_cards' %}"><i class="fas fa-id-card"></i> {{ _("generate_id_card") | capfirst }}</a>
   </div>
   <div class="card-body">
     <div class="table-responsive">
       <table id="students_table" class="table table-bordered table-hover" data-page-length='100'>
         <thead class="thead-light">
           <tr>
-            <th>S/N</th>
-            <th>Fullname</th>
-            <th>Registration Number</th>
-            <th>Current Class</th>
-            <th>Gender</th>
-            <th>Parent Mobile Number</th>
-            <th>Status</th>
-            <th>Option</th>
+            <th>{{ _("serial_number") | capfirst }}</th>
+            <th>{{ _("fullname") | capfirst }}</th>
+            <th>{{ _("student_id") | capfirst }}</th>
+            <th>{{ _("current_status") | capfirst }}</th>
+            <th>{{ _("gender") | capfirst }}</th>
+            <th>{{ _("parent_mobile_number") | capfirst }}</th>
+            <th>{{ _("status") | capfirst }}</th>
+            <th>{{ _("option") | capfirst }}</th>
           </tr>
         </thead>
         <tbody>

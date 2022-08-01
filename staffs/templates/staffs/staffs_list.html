@@ -2,23 +2,23 @@
 {% block content %}
 <div class="container-fluid card">
   <div class="card-header">
-    <a class="btn btn-primary" href="{% url 'new_staff' %}"><i class="fas fa-plus"></i> New staff</a>
-    <a class="btn btn-primary" href="#"><i class="fas fa-upload"></i> Upload staffs</a>
+    <a class="btn btn-primary" href="{% url 'new_staff' %}"><i class="fas fa-plus"></i> {{ _("add_staff") | capfirst }}</a>
+    <a class="btn btn-primary" href="#"><i class="fas fa-upload"></i> {{ _("bulk_staffs") | capfirst }}</a>
   </div>
   <div class="card-body">
     <div class="table-responsive">
       <table id="staffs_table" class="table table-bordered table-hover" data-page-length='100'>
         <thead class="thead-light">
           <tr>
-            <th>S/N</th>
-            <th>Fullname</th>
-            <th>Registration Number</th>
-            <th>Is teacher?</th>
-            <th>Diploma</th>
-            <th>Gender</th>
-            <th>Mobile Number</th>
-            <th>Status</th>
-            <th>Option</th>
+            <th>{{ _("serial_number") | capfirst }}</th>
+            <th>{{ _("fullname") | capfirst }}</th>
+            <th>{{ _("staff_id") | capfirst }}</th>
+            <th>{{ _("is_teacher") | capfirst }}</th>
+            <th>{{ _("diploma") | capfirst }}</th>
+            <th>{{ _("gender") | capfirst }}</th>
+            <th>{{ _("mobile_number") | capfirst }}</th>
+            <th>{{ _("status") | capfirst }}</th>
+            <th>{{ _("option") | capfirst }}</th>
           </tr>
         </thead>
         <tbody>

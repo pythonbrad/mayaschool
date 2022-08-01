@@ -31,6 +31,12 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+- Config the translation
+```bash
+python manage.py makemessages
+python manage.py compilemessages
+```
+
 - How to create an admin account
 ```bash
 python manage.py createsuperuser

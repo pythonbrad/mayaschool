@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import gettext as _
 from django.core.validators import RegexValidator
 import string
 
@@ -8,21 +9,25 @@ import string
 class SystemConfig(models.Model):
     """System configuration."""
 
-    key = models.SlugField(unique=True)
-    value = models.CharField(max_length=200)
+    key = models.SlugField(unique=True, verbose_name=_('key'))
+    value = models.CharField(max_length=200, verbose_name=_('value'))
 
     def __str__(self):
         return self.key
+
+    class Meta:
+        verbose_name = _('system_config').capitalize()
 
 
 class AcademicSession(models.Model):
     """Academic Session."""
 
-    name = models.CharField(max_length=200, unique=True)
-    current = models.BooleanField(default=True)
+    name = models.CharField(max_length=200, unique=True, verbose_name=_('name'))
+    current = models.BooleanField(default=True, verbose_name=_('current'))
 
     class Meta:
         ordering = ["-name"]
+        verbose_name = _('academic_session').capitalize()
 
     def __str__(self):
         return self.name
@@ -54,11 +59,12 @@ class AcademicSession(models.Model):
 class AcademicTerm(models.Model):
     """Academic Term."""
 
-    name = models.CharField(max_length=20, unique=True)
-    current = models.BooleanField(default=True)
+    name = models.CharField(max_length=20, unique=True, verbose_name=_('name'))
+    current = models.BooleanField(default=True, verbose_name=_('current'))
 
     class Meta:
         ordering = ["name"]
+        verbose_name = _('academic_term').capitalize()
 
     def __str__(self):
         return self.name
@@ -90,10 +96,11 @@ class AcademicTerm(models.Model):
 class Subject(models.Model):
     """Subject."""
 
-    name = models.CharField(max_length=200, unique=True)
+    name = models.CharField(max_length=200, unique=True, verbose_name=_('name'))
 
     class Meta:
         ordering = ["name"]
+        verbose_name = _('subject').capitalize()
 
     def __str__(self):
         return self.name
@@ -102,11 +109,11 @@ class Subject(models.Model):
 class Class(models.Model):
     """Parent class."""
 
-    name = models.CharField(max_length=200, unique=True)
+    name = models.CharField(max_length=200, unique=True, verbose_name=_('name'))
 
     class Meta:
-        verbose_name = "Class"
-        verbose_name_plural = "Classes"
+        verbose_name = _("class").capitalize()
+        verbose_name_plural = _("classes").capitalize()
         ordering = ["name"]
 
     def __str__(self):
@@ -116,12 +123,12 @@ class Class(models.Model):
 class SubClass(models.Model):
     """Child class."""
 
-    parent = models.ForeignKey(Class, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
+    parent = models.ForeignKey(Class, on_delete=models.CASCADE, verbose_name=_('parent'))
+    name = models.CharField(max_length=200, verbose_name=_('name'))
 
     class Meta:
-        verbose_name = "SubClass"
-        verbose_name_plural = "SubClasses"
+        verbose_name = _("subclass").capitalize()
+        verbose_name_plural = _("subclasses").capitalize()
         ordering = ["name"]
         unique_together = ['parent', 'name']
 
@@ -132,35 +139,38 @@ class SubClass(models.Model):
 class Person(models.Model):
     """Person."""
 
-    STATUS_CHOICES = [("active", "Active"), ("inactive", "Inactive")]
+    STATUS_CHOICES = [("active", _("active").capitalize()), ("inactive", _("inactive").capitalize())]
 
-    GENDER_CHOICES = [("male", "Male"), ("female", "Female")]
+    GENDER_CHOICES = [("male", _("male").capitalize()), ("female", _("female").capitalize())]
 
     status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default="active"
+        max_length=10, choices=STATUS_CHOICES, default="active", verbose_name=_("status")
     )
-    matricule = models.CharField(max_length=16, unique=True)
-    lastname = models.CharField(max_length=200)
-    firstname = models.CharField(max_length=200)
-    other_name = models.CharField(max_length=200, blank=True)
-    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default="male")
+    matricule = models.CharField(max_length=16, unique=True, verbose_name=_("matricule"))
+    lastname = models.CharField(max_length=200, verbose_name=_("lastname"))
+    firstname = models.CharField(max_length=200, verbose_name=_("firstname"))
+    other_name = models.CharField(max_length=200, blank=True, verbose_name=_("othername"))
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default="male", verbose_name=_("gender"))
     date_of_birth = models.DateField()
-    joined_date = models.DateField(default=timezone.now)
+    joined_date = models.DateField(default=timezone.now, verbose_name=_("joined_date"))
 
     mobile_num_regex = RegexValidator(
-        regex=r"^[0-9]{9}$", message="Entered mobile number isn't in a right format!"
+        regex=r"^[0-9]{9}$",
+        # Translators: We want inform the user that the mobile number don't respect the format
+        message=_("wrong_mobile_number").capitalize()
     )
     mobile_number = models.CharField(
-        validators=[mobile_num_regex], max_length=9, blank=True
+        validators=[mobile_num_regex], max_length=9, blank=True, verbose_name=_("mobile_number")
     )
 
-    address = models.TextField(blank=True)
-    others = models.TextField(blank=True)
-    passport = models.ImageField(blank=True, upload_to="students/passports/")
-    email = models.EmailField(blank=True)
+    address = models.TextField(blank=True, verbose_name=_("address"))
+    others = models.TextField(blank=True, verbose_name=_("others"))
+    passport = models.ImageField(blank=True, upload_to="students/passports/", verbose_name=_("passport"))
+    email = models.EmailField(blank=True, verbose_name=_("email"))
 
     class Meta:
         ordering = ["lastname", "firstname", "other_name"]
+        verbose_name = _("person").capitalize()
 
     def generate_matricule(self, obj):
         """Generate matricule."""

@@ -5,7 +5,7 @@
 <div class="card container-fluid">
     <div class="card-header">
       <div class="card-tools">
-        <a href="#" class="btn btn-tool">Print</a>
+        <a href="#" class="btn btn-tool">{{ _("print") | capfirst }}</a>
         <a href="{% url 'edit_staff' staff.pk %}" class="btn btn-tool">
           <i class="fas fa-edit"></i>
         </a>
@@ -36,26 +36,26 @@
         <div class="col-sm-8">
           <table class="table">
             <tr>
-              <th>Date of Birth</th>
+              <th>{{ _("birth_date") | capfirst }}</th>
               <td>{{ staff.person.date_of_birth }}</td>
             </tr>
 
             <tr>
-              <th>Mobile Number</th>
+              <th>{{ _("mobile_number") | capfirst }}</th>
               <td>{{ staff.person.mobile_number }}</td>
             </tr>
 
             <tr>
-              <th>Diploma</th>
+              <th>{{ _("diploma") | capfirst }}</th>
               <td>{{ staff.diploma }}</td>
             </tr>
 
             <tr>
-              <th>Address</th>
+              <th>{{ _("address") | capfirst }}</th>
               <td>{{ staff.person.address }}</td>
             </tr>
             <tr>
-              <th>Comments</th>
+              <th>{{ _("other_name") | capfirst }}</th>
               <td>{{ staff.person.others }}</td>
             </tr>
           </table>
@@ -63,13 +63,13 @@
       </div>
     </div>
     <div class="card-footer">
-      <h4>Classes</h4>
+      <h4>{{ _("classes") | capfirst }}</h4>
       {% if classes %}
         <table class="table table-sm table-bordered table-hover">
           <thead class="thead-light">
             <tr>
-              <th>Class</th>
-              <th>Subject</th>
+              <th>{{ _("class") | capfirst }}</th>
+              <th>{{ _("subject") | capfirst }}</th>
             </tr>
           </thead>
           <tbody>
@@ -82,7 +82,8 @@
           </tbody>
         </table>
       {% else %}
-          <p>This staff is not a teacher.</p>
+          {# Translators: We want inform the user that this staff is not a teacher #}
+          <p>{{ _("not_teacher") | capfirst }}</p>
       {% endif %}
     </div>
 </div>

@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.translation import gettext as _
 from ..models import SubClass
 from ..forms import SubClassForm
 
@@ -8,7 +9,7 @@ from ..forms import SubClassForm
 def index(request):
     subclasses = SubClass.objects.all()
     return render(request, 'core/subclasses_list.html', {
-        'title': 'Subclasses',
+        'title': _('subclasses_list').capitalize(),
         'current_page': 'setting.class.child',
         'subclasses': subclasses,
     })
@@ -26,7 +27,7 @@ def create(request):
     else:
         form = SubClassForm()
     return render(request, 'object_form.html', {
-        'title': 'New subclass',
+        'title': _('add_subclass').capitalize(),
         'current_page': 'setting.class.child',
         'form': form
     })
@@ -45,7 +46,7 @@ def edit(request, pk):
     else:
         form = SubClassForm(instance=obj)
     return render(request, 'object_form.html', {
-        'title': 'Edit subclass',
+        'title': _('edit_subclass').capitalize(),
         'current_page': 'setting.class.child',
         'form': form,
     })
@@ -60,7 +61,7 @@ def delete(request, pk):
     else:
         pass
     return render(request, 'delete_object.html', {
-        'title': 'Delete subject',
+        'title': _('delete_subclass').capitalize(),
         'object': obj,
         'current_page': 'setting.class.child',
     })

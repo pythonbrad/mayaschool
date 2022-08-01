@@ -5,19 +5,19 @@
   <div class="card-header row" id="filter">
     <form class="col">
       <div class="row form-group">
-        <label class="col-3" for="class">Class:</label>
+        <label class="col-3" for="class">{{ _("class") | capfirst }}:</label>
         <select class="form-control col" id="class" name="class" onchange="load_subclass()">
           <option value="">---</option>
         </select>
       </div>
       <div class="row form-group">
-        <label class="col-3" for="subclass">SubClass:</label>
+        <label class="col-3" for="subclass">{{ _("subclass") | capfirst }}:</label>
         <select class="form-control col" id="subclass" name="subclass">
           <option value="">---</option>
         </select>
       </div>
       <div class="row">
-        <button class="form-control btn btn-success">Sort</button>
+        <button class="form-control btn btn-success">{{ _("sort") | capfirst }}</button>
       </div>
     </form>
   </div>
@@ -39,7 +39,10 @@
               <div class="row" style="font-weight: bold; justify-content: center;">{{ request.system_config.school_name|default:"SCHOOL_NAME" }}</div>
               <div class="row" style="justify-content: center;">{{ request.system_config.school_address|default:"SCHOOL_ADDRESS" }}</div>
               <div class="row" style="justify-content: space-around;">
-                <div class="" style="font-weight: bold;">IDENTITY CARD</div>
+                <div class="" style="font-weight: bold;">
+                  IDENTITY CARD<br>
+                  <span class="text-sm text-muted"><i>{{ _("identity_card") | upper }}</i></span>
+                </div>
                 <div class="" style="font-weight: bold;">{{ request.current_session }}</div>
               </div>
             </div>
@@ -51,37 +54,60 @@
               <img src="{% if class_student.student.person.passport %}{{ class_student.student.person.passport.url }}{% else %}{% static 'vendor/adminlte/img/avatar.png' %}{% endif %}" width="100%">
             </div>
             <div class="col">
-              <div class="col" style="font-weight: bold;">
-                Student ID:
+              <div class="row">
+                <div class="col" style="font-weight: bold;">
+                  Student ID:<br>
+                  <span class="text-muted text-sm text-italic">
+                    <i>{{ _("student_id") | capfirst }}</i>
+                  </span>
+                </div>
+                <div class="col">
+                  {{ class_student.student.person.matricule }}
+                </div>
               </div>
-              <div class="col" style="font-weight: bold;">
-                Student Name:
+              <div class="row">
+                <div class="col" style="font-weight: bold;">
+                  Student Name:<br>
+                  <span class="text-muted text-sm text-italic">
+                    <i>{{ _("student_name") | capfirst }}</i>
+                  </span>
+                </div>
+                <div class="col">
+                  {{ class_student.student.person.firstname }} {{ class_student.student.person.lastname }}
+                </div>
               </div>
-              <div class="col" style="font-weight: bold;">
-                Class:
+              <div class="row">
+                <div class="col" style="font-weight: bold;">
+                  Class:<br>
+                  <span class="text-muted text-sm text-italic">
+                    <i>{{ _("class") | capfirst }}</i>
+                  </span>
+                </div>
+                <div class="col">
+                  {{ class_student.student.get_current_class.subclass }}
+                </div>
               </div>
-              <div class="col" style="font-weight: bold;">
-                Parent/Guardian:
+              <div class="row">
+                <div class="col" style="font-weight: bold;">
+                  Parent/Guardian:<br>
+                  <span class="text-muted text-sm text-italic">
+                    <i>{{ _("parent_or_guardian") | capfirst }}</i>
+                  </span>
+                </div>
+                <div class="col">
+                  {{ class_student.student.guardian }}
+                </div>
               </div>
-              <div class="col" style="font-weight: bold;">
-                Emergency Call:
-              </div>
-            </div>
-            <div class="col">
-              <div class="col">
-                {{ class_student.student.person.matricule }}
-              </div>
-              <div class="col">
-                {{ class_student.student.person.firstname }} {{ class_student.student.person.lastname }}
-              </div>
-              <div class="col">
-                {{ class_student.student.get_current_class.subclass }}
-              </div>
-              <div class="col">
-                {{ class_student.student.guardian }}
-              </div>
-              <div class="col">
-                {{ class_student.student.person.mobile_number }}
+              <div class="row">
+                <div class="col" style="font-weight: bold;">
+                  Emergency Call:<br>
+                  <span class="text-muted text-sm text-italic">
+                    <i>{{ _("sos_call") | capfirst }}</i>
+                  </span>
+                </div>
+                <div class="col">
+                  {{ class_student.student.person.mobile_number }}
+                </div>
               </div>
             </div>
           </div>

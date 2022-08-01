@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.translation import gettext as _
 from ..models import AcademicSession
 from ..forms import AcademicSessionForm
 
@@ -8,7 +9,7 @@ from ..forms import AcademicSessionForm
 def index(request):
     sessions = AcademicSession.objects.all()
     return render(request, 'core/sessions_list.html', {
-        'title': 'Sessions',
+        'title': _('sessions_list').capitalize(),
         'current_page': 'setting.session',
         'sessions': sessions,
     })
@@ -26,7 +27,7 @@ def create(request):
     else:
         form = AcademicSessionForm()
     return render(request, 'object_form.html', {
-        'title': 'New session',
+        'title': _('add_session').capitalize(),
         'current_page': 'setting.session',
         'form': form
     })
@@ -45,7 +46,7 @@ def edit(request, pk):
     else:
         form = AcademicSessionForm(instance=obj)
     return render(request, 'object_form.html', {
-        'title': 'Edit session',
+        'title': _('edit_session').capitalize(),
         'current_page': 'setting.session',
         'form': form,
     })
@@ -60,7 +61,7 @@ def delete(request, pk):
     else:
         pass
     return render(request, 'delete_object.html', {
-        'title': 'Delete session',
+        'title': _('delete_session').capitalize(),
         'object': obj,
         'current_page': 'setting.session',
     })

@@ -1,0 +1,190 @@
+# English translation of the finance app
+# Copyright (C) 2022
+# This file is distributed under the same license as the mayaschool package.
+# pythonbrad <fomegnemeudje@outlook.com>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-01 16:32+0000\n"
+"PO-Revision-Date: 2022-08-01 10:43+0000\n"
+"Last-Translator: Fomegne Meudje <fomegnemeudje@outlook.com>\n"
+"Language-Team: Team <LL@li.org>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: finance/models.py:11
+msgid "student"
+msgstr ""
+
+#: finance/models.py:12
+msgid "session"
+msgstr ""
+
+#: finance/models.py:13 finance/templates/finance/invoices_list.html:17
+#: finance/templates/finance/receipt_form.html:11
+msgid "term"
+msgstr ""
+
+#: finance/models.py:16
+msgid "active"
+msgstr ""
+
+#: finance/models.py:16
+msgid "closed"
+msgstr ""
+
+#: finance/models.py:17 finance/templates/finance/invoice_details.html:25
+msgid "status"
+msgstr ""
+
+#: finance/models.py:21 finance/models.py:42 finance/models.py:51
+#: finance/templates/finance/invoices_list.html:16
+#: finance/templates/finance/receipt_form.html:7
+msgid "invoice"
+msgstr ""
+
+#: finance/models.py:43 finance/templates/finance/invoice_details.html:37
+msgid "description"
+msgstr ""
+
+#: finance/models.py:44 finance/templates/finance/invoice_details.html:38
+#: finance/templates/finance/invoice_form.html:11
+msgid "amount"
+msgstr ""
+
+#: finance/models.py:47
+msgid "invoice_item"
+msgstr "invoice item"
+
+#: finance/models.py:52 finance/templates/finance/invoice_details.html:72
+msgid "amount_paid"
+msgstr "amount paid"
+
+#: finance/models.py:53
+msgid "date_paid"
+msgstr "date paid"
+
+#: finance/models.py:54
+msgid "comment"
+msgstr ""
+
+#. Translators: We want inform the user about the date of payment
+#: finance/models.py:58
+#, python-brace-format
+msgid "{self.date_paid}"
+msgstr "Receipt on {self.date_paid}"
+
+#: finance/models.py:61
+msgid "receipt"
+msgstr ""
+
+#: finance/templates/finance/invoice_details.html:7 finance/views.py:102
+msgid "add_receipt"
+msgstr "add receipt"
+
+#: finance/templates/finance/invoice_details.html:9
+msgid "print"
+msgstr ""
+
+#: finance/templates/finance/invoice_details.html:28
+msgid "expected_balance"
+msgstr "expected balance"
+
+#: finance/templates/finance/invoice_details.html:33
+msgid "invoice_breakdown"
+msgstr "invoice breakdown"
+
+#: finance/templates/finance/invoice_details.html:36
+#: finance/templates/finance/invoice_details.html:71
+#: finance/templates/finance/invoices_list.html:15
+msgid "serial_number"
+msgstr "S/N"
+
+#: finance/templates/finance/invoice_details.html:53
+#: finance/templates/finance/receipt_form.html:13
+msgid "total_amount_payable"
+msgstr "total amount payable"
+
+#: finance/templates/finance/invoice_details.html:58
+#: finance/templates/finance/receipt_form.html:15
+msgid "total_amount_paid"
+msgstr "total amount paid"
+
+#: finance/templates/finance/invoice_details.html:67
+msgid "payments_history"
+msgstr "payments history"
+
+#: finance/templates/finance/invoice_details.html:73
+msgid "payment_date"
+msgstr "payment date"
+
+#: finance/templates/finance/invoice_details.html:74
+msgid "payment_comment"
+msgstr ""
+
+#: finance/templates/finance/invoice_details.html:75
+#: finance/templates/finance/invoices_list.html:21
+msgid "option"
+msgstr ""
+
+#: finance/templates/finance/invoice_form.html:8
+msgid "fee_structure"
+msgstr "fee structure"
+
+#: finance/templates/finance/invoice_form.html:10
+msgid "fee_type"
+msgstr "fee type"
+
+#: finance/templates/finance/invoices_list.html:7 finance/views.py:45
+msgid "add_invoice"
+msgstr "add invoice"
+
+#: finance/templates/finance/invoices_list.html:8
+msgid "bulk_invoice"
+msgstr "bulk invoice"
+
+#: finance/templates/finance/invoices_list.html:18
+msgid "total_payable"
+msgstr "total à payable"
+
+#: finance/templates/finance/invoices_list.html:19
+msgid "total_paid"
+msgstr "total payer"
+
+#: finance/templates/finance/invoices_list.html:20
+#: finance/templates/finance/receipt_form.html:16
+msgid "balance"
+msgstr ""
+
+#: finance/templates/finance/receipt_form.html:12
+msgid "class"
+msgstr ""
+
+#: finance/views.py:11
+msgid "invoices_list"
+msgstr "invoices list"
+
+#: finance/views.py:24
+msgid "invoice_details"
+msgstr "invoice details"
+
+#: finance/views.py:68
+msgid "edit_invoice"
+msgstr "edit invoice"
+
+#: finance/views.py:84
+msgid "delete_invoice"
+msgstr "delete invoice"
+
+#: finance/views.py:122
+msgid "edit_receipt"
+msgstr "edit receipt"
+
+#: finance/views.py:138
+msgid "delete_receipt"
+msgstr "delete receipt"

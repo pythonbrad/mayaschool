@@ -2,16 +2,16 @@
 {% block content %}
 <div class="container-fluid card">
   <div class="card-header">
-    <a class="btn btn-primary" href="{% url 'new_system_config' %}"><i class="fas fa-plus"></i> New System Config</a>
+    <a class="btn btn-primary" href="{% url 'new_system_config' %}"><i class="fas fa-plus"></i> {{ _("add_system_config") | capfirst }}</a>
   </div>
   <div class="card-body">
     <div class="table-responsive">
       <table id="system_configs_table" class="table table-bordered table-hover" data-page-length='100'>
         <thead class="thead-light">
           <tr>
-            <th>Key</th>
-            <th>Value</th>
-            <th>Option</th>
+            <th>{{ _("key") | capfirst }}</th>
+            <th>{{ _("value") | capfirst }}</th>
+            <th>{{ _("option") | capfirst }}</th>
           </tr>
         </thead>
         <tbody>

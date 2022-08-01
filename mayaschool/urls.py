@@ -24,4 +24,5 @@ urlpatterns = [
     path('staffs/', include('staffs.urls')),
     path('finance/', include('finance.urls')),
     path('results/', include('results.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

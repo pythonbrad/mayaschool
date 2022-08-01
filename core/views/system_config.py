@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.translation import gettext as _
 from ..models import SystemConfig
 from ..forms import SystemConfigForm
 
@@ -8,7 +9,7 @@ from ..forms import SystemConfigForm
 def index(request):
     system_configs = SystemConfig.objects.all()
     return render(request, 'core/system_configs_list.html', {
-        'title': 'System Configs',
+        'title': _('system_configs_list').capitalize(),
         'current_page': 'setting.system_config',
         'system_configs': system_configs,
     })
@@ -26,7 +27,7 @@ def create(request):
     else:
         form = SystemConfigForm()
     return render(request, 'object_form.html', {
-        'title': 'New system_config',
+        'title': _('add_system_config').capitalize(),
         'current_page': 'setting.system_config',
         'form': form
     })
@@ -45,7 +46,7 @@ def edit(request, pk):
     else:
         form = SystemConfigForm(instance=obj)
     return render(request, 'object_form.html', {
-        'title': 'Edit system_config',
+        'title': _('edit_system_config').capitalize(),
         'current_page': 'setting.system_config',
         'form': form,
     })
@@ -60,7 +61,7 @@ def delete(request, pk):
     else:
         pass
     return render(request, 'delete_object.html', {
-        'title': 'Delete system_config',
+        'title': _('delete_system_config').capitalize(),
         'object': obj,
         'current_page': 'setting.system_config',
     })

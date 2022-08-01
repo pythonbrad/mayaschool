@@ -1,17 +1,20 @@
 {% extends 'index.html' %}
+
 {% block content %}
 <div class="container-fluid card">
   <div class="card-header">
-    <a class="btn btn-primary" href="{% url 'new_class' %}"><i class="fas fa-plus"></i> New class</a>
+    <a class="btn btn-primary" href="{% url 'new_class' %}">
+      <i class="fas fa-plus"></i> {{ _("add_class") | capfirst }}
+    </a>
   </div>
   <div class="card-body">
     <div class="table-responsive">
       <table id="classes_table" class="table table-bordered table-hover" data-page-length='100'>
         <thead class="thead-light">
           <tr>
-            <th>S/N</th>
-            <th>Name</th>
-            <th>Option</th>
+            <th>{{ _("serial_number") | capfirst }}</th>
+            <th>{{ _("name") | capfirst }}</th>
+            <th>{{ _("option") | capfirst }}</th>
           </tr>
         </thead>
         <tbody>

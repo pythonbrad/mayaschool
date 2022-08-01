@@ -1,0 +1,176 @@
+# English translation of the students app
+# Copyright (C) 2022
+# This file is distributed under the same license as the mayaschool package.
+# pythonbrad <fomegnemeudje@outlook.com>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-01 16:32+0000\n"
+"PO-Revision-Date: 2022-08-01 10:43+0000\n"
+"Last-Translator: Fomegne Meudje <fomegnemeudje@outlook.com>\n"
+"Language-Team: Team <LL@li.org>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: students/forms.py:12
+msgid "current_class"
+msgstr "current class"
+
+#: students/forms.py:13 students/models.py:10
+msgid "guardian"
+msgstr ""
+
+#: students/models.py:9
+msgid "person"
+msgstr ""
+
+#: students/models.py:14 students/models.py:34
+msgid "student"
+msgstr ""
+
+#: students/models.py:35 students/templates/students/id_cards_list.html:14
+msgid "subclass"
+msgstr ""
+
+#: students/models.py:36
+msgid "session"
+msgstr ""
+
+#: students/templates/students/id_cards_list.html:8
+#: students/templates/students/id_cards_list.html:83
+msgid "class"
+msgstr ""
+
+#: students/templates/students/id_cards_list.html:20
+msgid "sort"
+msgstr ""
+
+#: students/templates/students/id_cards_list.html:44
+msgid "identity_card"
+msgstr "identity card"
+
+#: students/templates/students/id_cards_list.html:61
+#: students/templates/students/students_list.html:16
+msgid "student_id"
+msgstr "student id"
+
+#: students/templates/students/id_cards_list.html:72
+msgid "student_name"
+msgstr "student name"
+
+#: students/templates/students/id_cards_list.html:94
+#: students/templates/students/student_details.html:45
+msgid "parent_or_guardian"
+msgstr "parent or guardian"
+
+#: students/templates/students/id_cards_list.html:105
+msgid "sos_call"
+msgstr "SOS call"
+
+#: students/templates/students/student_details.html:9
+msgid "print"
+msgstr ""
+
+#: students/templates/students/student_details.html:40
+msgid "birth_date"
+msgstr "birth date"
+
+#: students/templates/students/student_details.html:50
+#: students/templates/students/students_list.html:19
+msgid "parent_mobile_number"
+msgstr "parent mobile number"
+
+#: students/templates/students/student_details.html:55
+msgid "address"
+msgstr ""
+
+#: students/templates/students/student_details.html:59
+msgid "comments"
+msgstr ""
+
+#: students/templates/students/student_details.html:67
+msgid "payment_history"
+msgstr "payment history"
+
+#. Translators: Reason of payment
+#: students/templates/students/student_details.html:73
+msgid "for"
+msgstr ""
+
+#: students/templates/students/student_details.html:74
+msgid "amount_payable"
+msgstr "amount payable"
+
+#: students/templates/students/student_details.html:75
+msgid "amount_paid"
+msgstr "amount paid"
+
+#: students/templates/students/student_details.html:76
+msgid "expected_balance"
+msgstr "expected balance"
+
+#. Translators: We want inform the user that no payement history has been found
+#: students/templates/students/student_details.html:92
+msgid "no_payment_history"
+msgstr "There are no payment history for"
+
+#: students/templates/students/students_list.html:5 students/views.py:46
+msgid "add_student"
+msgstr "add student"
+
+#: students/templates/students/students_list.html:6
+msgid "bulk_student"
+msgstr "bulk student"
+
+#: students/templates/students/students_list.html:7
+msgid "generate_id_card"
+msgstr "generate id card"
+
+#: students/templates/students/students_list.html:14
+msgid "serial_number"
+msgstr "S/N"
+
+#: students/templates/students/students_list.html:15
+msgid "fullname"
+msgstr ""
+
+#: students/templates/students/students_list.html:17
+msgid "current_status"
+msgstr "status"
+
+#: students/templates/students/students_list.html:18
+msgid "gender"
+msgstr ""
+
+#: students/templates/students/students_list.html:20
+msgid "status"
+msgstr ""
+
+#: students/templates/students/students_list.html:21
+msgid "option"
+msgstr ""
+
+#: students/views.py:12
+msgid "students_list"
+msgstr "students list"
+
+#: students/views.py:23
+msgid "student_details"
+msgstr "student details"
+
+#: students/views.py:81
+msgid "edit_student"
+msgstr "edit student"
+
+#: students/views.py:96
+msgid "delete_student"
+msgstr "delete student"
+
+#: students/views.py:124
+msgid "id_cards_list"
+msgstr "id cards list"

@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block body %}
+  {% get_current_language as LANGUAGE_CODE %}
+  {% get_available_languages as languages %}
   <div class="wrapper">
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
@@ -19,26 +22,53 @@
           </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{% url 'edit_session' request.current_session.pk %}" class="nav-link">Session: {{ request.current_session.name }}</a>
+          <a href="{% url 'edit_session' request.current_session.pk %}" class="nav-link">
+          {# "Current Session" #}
+          {{ _("session") | capfirst }}: {{ request.current_session.name }}
+        </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{% url 'edit_term' request.current_term.pk %}" class="nav-link">Term: {{ request.current_term.name }}</a>
+          <a href="{% url 'edit_term' request.current_term.pk %}" class="nav-link">
+            {# "Current Term" #}
+            {{ _("term") | capfirst }}: {{ request.current_term.name }}
+          </a>
         </li>
       </ul>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-language"></i>
+          </a>
+          <form class="dropdown-menu" action="{% url 'set_language' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="language" id="language">
+            <input name="next" type="hidden" value="{{ request.get_full_path }}">
+          {% for lang_code, lang_name in languages %}
+            {% language lang_code %}
+            <a class="dropdown-item" href="#" onclick="$('#language').val('{{ lang_code }}');$('#setlanguage').click()">
+              {{ lang_name }}
+              {% if lang_code.lower == LANGUAGE_CODE %}
+              <i class="fa fa-check-circle"></i>
+              {% endif %}
+            </a>
+            {% endlanguage %}
+          {% endfor %}
+            <button type="submit" id="setlanguage" hidden></button>
+          </form>
+        </li>
+        <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
             <i class="far fa-user"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
             <a href="#" class="dropdown-item">
-              <i class="fas fa-user mr-2"></i> Profile
+              <i class="fas fa-user mr-2"></i> {{ _("profile") | capfirst }}
             </a>
             <div class="dropdown-divider"></div>
             <a href="{% url 'logout' %}" class="dropdown-item">
-              <i class="fas fa-sign-out"></i> Sign out
+              <i class="fas fa-sign-out"></i> {{ _("sign_out") | capfirst }}
             </a>
           </div>
         </li>
@@ -78,45 +108,45 @@
             <li class="nav-item">
               <a href="{% url 'dashboard' %}" class="nav-link {% if current_page == 'dashboard' %}active{% endif %}">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>Dashboard</p>
+                <p>{{ _("dashboard") | capfirst }}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{% url 'students' %}" class="nav-link {% if current_page == 'student' %}active{% endif %}">
                 <i class="nav-icon fas fa-user-graduate"></i>
-                <p>Student</p>
+                <p>{{ _("student") | capfirst }}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{% url 'staffs' %}" class="nav-link {% if current_page == 'staff' %}active{% endif %}">
                 <i class="nav-icon fas fa-user-tie"></i>
-                <p>School staff</p>
+                <p>{{ _("school_staff") | capfirst }}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{% url 'invoices' %}" class="nav-link {% if current_page == 'invoice' %}active{% endif %}">
                 <i class="nav-icon fas fa-money-bill"></i>
-                <p>Finance</p>
+                <p>{{ _("finance") | capfirst }}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link {% if current_page == 'result' %}active{% endif %}">
                 <i class="nav-icon fas fa-pencil-ruler"></i>
-                <p>Results <i class="right fas fa-angle-left"></i></p>
+                <p>{{ _("results") | capfirst }} <i class="right fas fa-angle-left"></i></p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     &nbsp;&nbsp;&nbsp;
                     <i class="far fa-edit nav-icon"></i>
-                    <p>Note</p>
+                    <p>{{ _("note") | capfirst }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     &nbsp;&nbsp;&nbsp;
                     <i class="fas fa-file-alt nav-icon"></i>
-                    <p>Report Card</p>
+                    <p>{{ _("report_card") | capfirst }}</p>
                   </a>
                 </li>
               </ul>
@@ -124,49 +154,49 @@
             <li class="nav-item {% if 'setting' in current_page %}menu-is-opening menu-open{% endif %}">
               <a href="#" class="nav-link {% if 'setting' in current_page %}active{% endif %}">
                 <i class="nav-icon fas fa-tools"></i>
-                <p>Settings <i class="right fas fa-angle-left"></i></p>
+                <p>{{ _("settings") | capfirst }} <i class="right fas fa-angle-left"></i></p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{% url 'sessions' %}" class="nav-link {% if '.session' in current_page %}active{% endif %}">
                     &nbsp;&nbsp;&nbsp;
                     <i class="fas fa-calendar nav-icon"></i>
-                    <p>Session</p>
+                    <p>{{ _("session") | capfirst }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{% url 'terms' %}" class="nav-link {% if '.term' in current_page %}active{% endif %}">
                     &nbsp;&nbsp;&nbsp;
                     <i class="fas fa-calendar-week nav-icon"></i>
-                    <p>Term</p>
+                    <p>{{ _("term") | capfirst }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{% url 'subjects' %}" class="nav-link {% if '.subject' in current_page %}active{% endif %}">
                     &nbsp;&nbsp;&nbsp;
                     <i class="fas fa-book-open nav-icon"></i>
-                    <p>Subject</p>
+                    <p>{{ _("subject") | capfirst }}</p>
                   </a>
                 </li>
                 <li class="nav-item {% if '.class' in current_page %}menu-is-opening menu-open{% endif %}">
                   <a href="#" class="nav-link {% if '.class' in current_page %}active{% endif %}">
                     &nbsp;&nbsp;&nbsp;
                     <i class="nav-icon fas fa-chalkboard"></i>
-                    <p>Class <i class="right fas fa-angle-left"></i></p>
+                    <p>{{ _("class") | capfirst }} <i class="right fas fa-angle-left"></i></p>
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{% url 'classes' %}" class="nav-link">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <i class="fas fa-square nav-icon"></i>
-                        <p>Parent</p>
+                        <p>{{ _("parent") | capfirst }}</p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a href="{% url 'subclasses' %}" class="nav-link">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <i class="fas fa-sitemap nav-icon"></i>
-                        <p>Child</p>
+                        <p>{{ _("child") | capfirst }}</p>
                       </a>
                     </li>
                   </ul>
@@ -175,7 +205,7 @@
                   <a href="{% url 'system_configs' %}" class="nav-link {% if '.system_config' in current_page %}active{% endif %}">
                     &nbsp;&nbsp;&nbsp;
                     <i class="fas fa-database nav-icon"></i>
-                    <p>System</p>
+                    <p>{{ _("system") | capfirst }}</p>
                   </a>
                 </li>
               </ul>
@@ -183,21 +213,22 @@
             <li class="nav-item">
               <a href="#" class="nav-link {% if current_page == 'extras' %}active{% endif %}">
                 <i class="nav-icon fas fa-plus-square"></i>
-                <p>Extras <i class="right fas fa-angle-left"></i></p>
+                {# "Translators: Additional functionalities" #}
+                <p>{{ _("Extras") | capfirst }} <i class="right fas fa-angle-left"></i></p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     &nbsp;&nbsp;&nbsp;
                     <i class="fas fa-file-import nav-icon"></i>
-                    <p>Import data</p>
+                    <p>{{ _("import_data") | capfirst }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     &nbsp;&nbsp;&nbsp;
                     <i class="fas fa-file-export nav-icon"></i>
-                    <p>Export data</p>
+                    <p>{{ _("export_data") | capfirst }}</p>
                   </a>
                 </li>
               </ul>
@@ -205,13 +236,14 @@
             <li class="nav-item">
               <a href="#" class="nav-link {% if current_page == 'faq' %}active{% endif %}">
                 <i class="nav-icon fas fa-question-circle"></i>
-                <p>FAQ</p>
+                <p>{{ _("faq") | upper }}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link {% if current_page == 'license' %}active{% endif %}">
                 <i class="nav-icon fas fa-file-contract"></i>
-                <p>License</p>
+                {# "Software License" #}
+                <p>{{ _("license") | capfirst }}</p>
               </a>
             </li>
           </ul>

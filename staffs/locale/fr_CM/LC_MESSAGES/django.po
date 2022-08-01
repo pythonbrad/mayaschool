@@ -1,0 +1,138 @@
+# French translation of the core app
+# Copyright (C) 2022
+# This file is distributed under the same license as the mayaschool package.
+# pythonbrad <fomegnemeudje@outlook.com>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-01 16:32+0000\n"
+"PO-Revision-Date: 2022-08-01 10:43+0000\n"
+"Last-Translator: Fomegne Meudje <fomegnemeudje@outlook.com>\n"
+"Language-Team: Team <LL@li.org>\n"
+"Language: French\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: staffs/forms.py:7 staffs/models.py:10
+#: staffs/templates/staffs/staff_details.html:49
+#: staffs/templates/staffs/staffs_list.html:17
+msgid "diploma"
+msgstr "diplome"
+
+#: staffs/models.py:9
+msgid "person"
+msgstr "personne"
+
+#: staffs/models.py:14
+msgid "staff"
+msgstr "peronnel"
+
+#: staffs/models.py:31
+msgid "teacher"
+msgstr "enseignant"
+
+#: staffs/models.py:32 staffs/templates/staffs/staff_details.html:72
+msgid "subject"
+msgstr "matière"
+
+#: staffs/models.py:33
+msgid "subclass"
+msgstr "sous-classe"
+
+#: staffs/models.py:34
+msgid "session"
+msgstr ""
+
+#: staffs/models.py:38
+msgid "class_teacher"
+msgstr "enseignant"
+
+#: staffs/templates/staffs/staff_details.html:8
+msgid "print"
+msgstr "imprimer"
+
+#: staffs/templates/staffs/staff_details.html:39
+msgid "birth_date"
+msgstr "date de naissance"
+
+#: staffs/templates/staffs/staff_details.html:44
+#: staffs/templates/staffs/staffs_list.html:19
+msgid "mobile_number"
+msgstr "numéro de téléphone"
+
+#: staffs/templates/staffs/staff_details.html:54
+msgid "address"
+msgstr ""
+
+#: staffs/templates/staffs/staff_details.html:58
+msgid "other_name"
+msgstr "autre nom"
+
+#: staffs/templates/staffs/staff_details.html:66
+msgid "classes"
+msgstr ""
+
+#: staffs/templates/staffs/staff_details.html:71
+msgid "class"
+msgstr "classe"
+
+#. Translators: We want inform the user that this staff is not a teacher
+#: staffs/templates/staffs/staff_details.html:86
+msgid "not_teacher"
+msgstr "ce personnel n'est pas un enseignant"
+
+#: staffs/templates/staffs/staffs_list.html:5 staffs/views.py:40
+msgid "add_staff"
+msgstr "nouveau personnel"
+
+#: staffs/templates/staffs/staffs_list.html:6
+msgid "bulk_staffs"
+msgstr "importer des personnels"
+
+#: staffs/templates/staffs/staffs_list.html:13
+msgid "serial_number"
+msgstr "S/N"
+
+#: staffs/templates/staffs/staffs_list.html:14
+msgid "fullname"
+msgstr "Nom complet"
+
+#: staffs/templates/staffs/staffs_list.html:15
+msgid "staff_id"
+msgstr "identifiant du personnel"
+
+#: staffs/templates/staffs/staffs_list.html:16
+msgid "is_teacher"
+msgstr "enseignant?"
+
+#: staffs/templates/staffs/staffs_list.html:18
+msgid "gender"
+msgstr "genre"
+
+#: staffs/templates/staffs/staffs_list.html:20
+msgid "status"
+msgstr ""
+
+#: staffs/templates/staffs/staffs_list.html:21
+msgid "option"
+msgstr ""
+
+#: staffs/views.py:12
+msgid "staffs_list"
+msgstr "liste des personnels"
+
+#: staffs/views.py:22
+msgid "staff_details"
+msgstr "detail du personnel"
+
+#: staffs/views.py:65
+msgid "edit_staff"
+msgstr "éditer le personnel"
+
+#: staffs/views.py:80
+msgid "delete_staff"
+msgstr "supprimer le personnel"

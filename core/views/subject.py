@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.translation import gettext as _
 from ..models import Subject
 from ..forms import SubjectForm
 
@@ -8,7 +9,7 @@ from ..forms import SubjectForm
 def index(request):
     subjects = Subject.objects.all()
     return render(request, 'core/subjects_list.html', {
-        'title': 'Subjects',
+        'title': _('subjects_list').capitalize(),
         'current_page': 'setting.subject',
         'subjects': subjects,
     })
@@ -26,7 +27,7 @@ def create(request):
     else:
         form = SubjectForm()
     return render(request, 'object_form.html', {
-        'title': 'New subject',
+        'title': _('add_subject').capitalize(),
         'current_page': 'setting.subject',
         'form': form
     })
@@ -45,7 +46,7 @@ def edit(request, pk):
     else:
         form = SubjectForm(instance=obj)
     return render(request, 'object_form.html', {
-        'title': 'Edit subject',
+        'title': _('edit_subject').capitalize(),
         'current_page': 'setting.subject',
         'form': form,
     })
@@ -60,7 +61,7 @@ def delete(request, pk):
     else:
         pass
     return render(request, 'delete_object.html', {
-        'title': 'Delete subject',
+        'title': _('delete_subject').capitalize(),
         'object': obj,
         'current_page': 'setting.subject',
     })

@@ -2,17 +2,17 @@
 {% block content %}
 <div class="container-fluid card">
   <div class="card-header">
-    <a class="btn btn-primary" href="{% url 'new_subclass' %}"><i class="fas fa-plus"></i> New subclass</a>
+    <a class="btn btn-primary" href="{% url 'new_subclass' %}"><i class="fas fa-plus"></i> {{ _("add_subclass") | capfirst }}</a>
   </div>
   <div class="card-body">
     <div class="table-responsive">
       <table id="subclasses_table" class="table table-bordered table-hover" data-page-length='100'>
         <thead class="thead-light">
           <tr>
-            <th>S/N</th>
-            <th>Parent</th>
-            <th>Name</th>
-            <th>Option</th>
+            <th>{{ _("serial_number") | capfirst }}</th>
+            <th>{{ _("parent") | capfirst }}</th>
+            <th>{{ _("name") | capfirst }}</th>
+            <th>{{ _("option") | capfirst }}</th>
           </tr>
         </thead>
         <tbody>

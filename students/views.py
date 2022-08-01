@@ -2,13 +2,14 @@ from core.models import SubClass, Class
 from .models import Student, ClassStudent
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.translation import gettext as _
 from .forms import StudentForm
 
 
 @login_required
 def index(request):
     return render(request, 'students/students_list.html', {
-        'title': 'Students',
+        'title': _('students_list').capitalize(),
         'current_page': 'student',
         'class_students': request.current_session.classstudent_set.all()
     })
@@ -19,7 +20,7 @@ def details(request, pk):
     obj = get_object_or_404(Student, pk=pk)
     return render(request, 'students/student_details.html', {
         'student': obj,
-        'title': 'Student Details',
+        'title': _('student_details').capitalize(),
         'current_page': 'student',
         'payments': obj.invoice_set.all(),
     })
@@ -42,7 +43,7 @@ def create(request):
     else:
         form = StudentForm()
     return render(request, 'object_form.html', {
-        'title': 'New Student',
+        'title': _('add_student').capitalize(),
         'current_page': 'student',
         'form': form
     })
@@ -77,7 +78,7 @@ def edit(request, pk):
             },
             instance=obj.person)
     return render(request, 'object_form.html', {
-        'title': 'Edit Student',
+        'title': _('edit_student').capitalize(),
         'current_page': 'student',
         'form': form
     })
@@ -92,7 +93,7 @@ def delete(request, pk):
     else:
         pass
     return render(request, 'delete_object.html', {
-        'title': 'Delete student',
+        'title': _('delete_student').capitalize(),
         'object': obj,
         'current_page': 'student',
     })
@@ -120,7 +121,7 @@ def generate_id_cards(request):
             pass
 
     return render(request, 'students/id_cards_list.html', {
-        'title': 'ID Cards',
+        'title': _('id_cards_list').capitalize(),
         'class_students': data,
         'current_page': 'student',
         'options': options,
