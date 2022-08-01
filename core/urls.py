@@ -13,4 +13,8 @@ urlpatterns = [
     path('classes/child/create', views.new_subclass, name='new_subclass'),
     path('classes/child/<int:pk>/edit', views.edit_subclass, name='edit_subclass'),
     path('classes/child/<int:pk>/delete', views.delete_subclass, name='delete_subclass'),
+    path('sessions', views.sessions, name='sessions'),
+    path('sessions/create', views.new_session, name='new_session'),
+    path('sessions/<int:pk>/edit', views.edit_session, name='edit_session'),
+    path('sessions/<int:pk>/delete', views.delete_session, name='delete_session'),
 ]

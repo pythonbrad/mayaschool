@@ -126,7 +126,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{% url 'sessions' %}" class="nav-link {% if '.session' in current_page %}active{% endif %}">
                     <i class="fas fa-image nav-icon"></i>
                     <p>Session</p>
                   </a>

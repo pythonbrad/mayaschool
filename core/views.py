@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from students.models import ClassStudent
 from staffs.models import Staff
-from .models import SubClass, Class
+from .models import AcademicSession, SubClass, Class
 from finance.models import Invoice
 from django.contrib.auth.decorators import login_required
-from .forms import ClassForm, SubClassForm
+from .forms import ClassForm, SubClassForm, AcademicSessionForm
 
 
 @login_required
@@ -148,3 +148,64 @@ def delete_subclass(request, pk):
         'current_page': 'setting.class.child',
     })
 
+
+@login_required
+def sessions(request):
+    sessions = AcademicSession.objects.all()
+    return render(request, 'core/sessions_list.html', {
+        'title': 'Sessions',
+        'current_page': 'setting.session',
+        'sessions': sessions,
+    })
+
+
+@login_required
+def new_session(request):
+    if request.POST:
+        form = AcademicSessionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('sessions')
+        else:
+            pass
+    else:
+        form = AcademicSessionForm()
+    return render(request, 'new_object.html', {
+        'title': 'New session',
+        'current_page': 'setting.session',
+        'form': form
+    })
+
+
+@login_required
+def edit_session(request, pk):
+    obj = get_object_or_404(AcademicSession, pk=pk)
+    if request.POST:
+        form = AcademicSessionForm(request.POST, instance=obj)
+        if form.is_valid():
+            form.save()
+            return redirect('sessions')
+        else:
+            pass
+    else:
+        form = AcademicSessionForm(instance=obj)
+    return render(request, 'new_object.html', {
+        'title': 'Edit session',
+        'current_page': 'setting.session',
+        'form': form,
+    })
+
+
+@login_required
+def delete_session(request, pk):
+    obj = get_object_or_404(AcademicSession, pk=pk)
+    if request.POST:
+        obj.delete()
+        return redirect('sessions')
+    else:
+        pass
+    return render(request, 'delete_object.html', {
+        'title': 'Delete session',
+        'object': obj,
+        'current_page': 'setting.session',
+    })
