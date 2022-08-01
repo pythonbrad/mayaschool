@@ -21,4 +21,8 @@ urlpatterns = [
     path('terms/create', views.new_term, name='new_term'),
     path('terms/<int:pk>/edit', views.edit_term, name='edit_term'),
     path('terms/<int:pk>/delete', views.delete_term, name='delete_term'),
+    path('subjects', views.subjects, name='subjects'),
+    path('subjects/create', views.new_subject, name='new_subject'),
+    path('subjects/<int:pk>/edit', views.edit_subject, name='edit_subject'),
+    path('subjects/<int:pk>/delete', views.delete_subject, name='delete_subject'),
 ]

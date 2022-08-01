@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from students.models import ClassStudent
 from staffs.models import Staff
-from .models import AcademicSession, AcademicTerm, SubClass, Class
+from .models import AcademicSession, AcademicTerm, SubClass, Class, Subject
 from finance.models import Invoice
 from django.contrib.auth.decorators import login_required
-from .forms import ClassForm, SubClassForm, AcademicSessionForm, AcademicTermForm
+from .forms import ClassForm, SubClassForm, AcademicSessionForm, AcademicTermForm, SubjectForm
 
 
 @login_required
@@ -270,4 +270,66 @@ def delete_term(request, pk):
         'title': 'Delete term',
         'object': obj,
         'current_page': 'setting.term',
+    })
+
+
+@login_required
+def subjects(request):
+    subjects = Subject.objects.all()
+    return render(request, 'core/subjects_list.html', {
+        'title': 'Subjects',
+        'current_page': 'setting.subject',
+        'subjects': subjects,
+    })
+
+
+@login_required
+def new_subject(request):
+    if request.POST:
+        form = SubjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('subjects')
+        else:
+            pass
+    else:
+        form = SubjectForm()
+    return render(request, 'new_object.html', {
+        'title': 'New subject',
+        'current_page': 'setting.subject',
+        'form': form
+    })
+
+
+@login_required
+def edit_subject(request, pk):
+    obj = get_object_or_404(Subject, pk=pk)
+    if request.POST:
+        form = SubjectForm(request.POST, instance=obj)
+        if form.is_valid():
+            form.save()
+            return redirect('subjects')
+        else:
+            pass
+    else:
+        form = SubjectForm(instance=obj)
+    return render(request, 'new_object.html', {
+        'title': 'Edit subject',
+        'current_page': 'setting.subject',
+        'form': form,
+    })
+
+
+@login_required
+def delete_subject(request, pk):
+    obj = get_object_or_404(Subject, pk=pk)
+    if request.POST:
+        obj.delete()
+        return redirect('subjects')
+    else:
+        pass
+    return render(request, 'delete_object.html', {
+        'title': 'Delete subject',
+        'object': obj,
+        'current_page': 'setting.subject',
     })
