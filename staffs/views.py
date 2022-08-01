@@ -1,4 +1,4 @@
-from core.models import AcademicSession, AcademicTerm, SubClass
+from core.models import SubClass
 from .models import Staff
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -10,7 +10,7 @@ def index(request):
     return render(request, 'staffs/staffs_list.html', {
         'title': 'Staffs',
         'current_page': 'staff',
-        'staffs': Staff.objects.filter()
+        'staffs': Staff.objects.all()
     })
 
 
@@ -35,7 +35,7 @@ def create(request):
             pass
     else:
         form = StaffForm()
-    return render(request, 'new_object.html', {
+    return render(request, 'object_form.html', {
         'title': 'New Staff',
         'current_page': 'staff',
         'form': form
@@ -49,15 +49,12 @@ def edit(request, pk):
         form = StaffForm(request.POST, request.FILES, instance=obj.person)
         if form.is_valid():
             form.save()
-            current_class = obj.get_current_class()
-            current_class.subclass = SubClass.objects.get(pk=form.cleaned_data['current_class'])
-            current_class.save()
             return redirect('staffs')
         else:
             pass
     else:
         form = StaffForm(instance=obj.person)
-    return render(request, 'new_object.html', {
+    return render(request, 'object_form.html', {
         'title': 'Edit Staff',
         'current_page': 'staff',
         'form': form

@@ -10,7 +10,7 @@ class Staff(models.Model):
 
 
     def is_teacher(self):
-        return ClassTeacher.objects.filter(teacher=self).exists()
+        return self.classteacher_set.exists()
 
     def save(self, *args, **kwargs):
         """Save."""

@@ -30,10 +30,10 @@
                 <td>{{ class_student.student.person.get_gender_display }}</td>
                 <td>{{ class_student.student.person.mobile_number }}</td>
                 <td>{{ class_student.student.person.get_status_display }}</td>
-                <td>
-                  <a href="{% url 'student_details' class_student.student.pk %}"><i class="fa fa-eye"></i></a>
-                  <a href="{% url 'edit_student' class_student.student.pk %}"><i class="fa fa-edit"></i></a>
-                  <a href="{% url 'delete_student' class_student.student.pk %}"><i class="fa fa-trash-alt"></i></a>
+                <td class="row text-center">
+                  <a class="col btn" href="{% url 'student_details' class_student.student.pk %}"><i class="fa fa-eye text-primary"></i></a>
+                  <a class="col btn" href="{% url 'edit_student' class_student.student.pk %}"><i class="fa fa-edit text-primary"></i></a>
+                  <a class="col btn" href="{% url 'delete_student' class_student.student.pk %}"><i class="fa fa-trash-alt text-primary"></i></a>
                 </td>
             </tr>
             {% endfor %}

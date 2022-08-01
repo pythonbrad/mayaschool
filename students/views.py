@@ -1,4 +1,4 @@
-from core.models import AcademicSession
+from core.models import SubClass
 from .models import Student, ClassStudent
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -10,7 +10,7 @@ def index(request):
     return render(request, 'students/students_list.html', {
         'title': 'Students',
         'current_page': 'student',
-        'class_students': ClassStudent.objects.filter(session=request.current_session)
+        'class_students': request.current_session.classstudent_set.all()
     })
 
 
@@ -39,7 +39,7 @@ def create(request):
             pass
     else:
         form = StudentForm()
-    return render(request, 'new_object.html', {
+    return render(request, 'object_form.html', {
         'title': 'New Student',
         'current_page': 'student',
         'form': form
@@ -61,7 +61,7 @@ def edit(request, pk):
             pass
     else:
         form = StudentForm(instance=obj.person)
-    return render(request, 'new_object.html', {
+    return render(request, 'object_form.html', {
         'title': 'Edit Student',
         'current_page': 'student',
         'form': form

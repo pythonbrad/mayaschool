@@ -25,7 +25,7 @@ def create(request):
             pass
     else:
         form = ClassForm()
-    return render(request, 'new_object.html', {
+    return render(request, 'object_form.html', {
         'title': 'New class',
         'current_page': 'setting.class.parent',
         'form': form
@@ -44,7 +44,7 @@ def edit(request, pk):
             pass
     else:
         form = ClassForm(instance=obj)
-    return render(request, 'new_object.html', {
+    return render(request, 'object_form.html', {
         'title': 'Edit class',
         'current_page': 'setting.class.parent',
         'form': form,

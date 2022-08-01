@@ -25,7 +25,7 @@ def create(request):
             pass
     else:
         form = SubjectForm()
-    return render(request, 'new_object.html', {
+    return render(request, 'object_form.html', {
         'title': 'New subject',
         'current_page': 'setting.subject',
         'form': form
@@ -44,7 +44,7 @@ def edit(request, pk):
             pass
     else:
         form = SubjectForm(instance=obj)
-    return render(request, 'new_object.html', {
+    return render(request, 'object_form.html', {
         'title': 'Edit subject',
         'current_page': 'setting.subject',
         'form': form,

@@ -1,8 +1,8 @@
 {% extends 'index.html' %}
 {% block content %}
 <div class="card container-fluid">
-  <div class="card-body">
-    <form class="form row" method="POST" enctype="multipart/form-data">
+  <form class="form" method="POST" enctype="multipart/form-data">
+    <div class="card-body row">
       {% csrf_token %}
       <div class="col">
         {% for field in form %}

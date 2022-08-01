@@ -21,9 +21,9 @@
               <td>{{ forloop.counter }}</td>
               <td>{{ session.name }}</td>
               <td>{{ session.current }}</td>
-              <td>
-                <a href="{% url 'edit_session' session.pk %}"><i class="fa fa-edit"></i></a>
-                <a href="{% url 'delete_session' session.pk %}"><i class="fa fa-trash-alt"></i></a>
+              <td class="row text-center">
+                <a class="col btn" href="{% url 'edit_session' session.pk %}"><i class="fa fa-edit text-primary"></i></a>
+                <a class="col btn" href="{% url 'delete_session' session.pk %}"><i class="fa fa-trash-alt text-primary"></i></a>
               </td>
           </tr>
           {% endfor %}

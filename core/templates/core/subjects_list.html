@@ -19,9 +19,9 @@
           <tr class='clickable-row' data-href="{% url 'edit_subject' subject.pk %}">
               <td>{{ forloop.counter }}</td>
               <td>{{ subject.name }}</td>
-              <td>
-                <a href="{% url 'edit_subject' subject.pk %}"><i class="fa fa-edit"></i></a>
-                <a href="{% url 'delete_subject' subject.pk %}"><i class="fa fa-trash-alt"></i></a>
+              <td class="row text-center">
+                <a class="col btn" href="{% url 'edit_subject' subject.pk %}"><i class="fa fa-edit text-primary"></i></a>
+                <a class="col btn" href="{% url 'delete_subject' subject.pk %}"><i class="fa fa-trash-alt text-primary"></i></a>
               </td>
           </tr>
           {% endfor %}
