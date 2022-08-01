@@ -17,4 +17,8 @@ urlpatterns = [
     path('sessions/create', views.new_session, name='new_session'),
     path('sessions/<int:pk>/edit', views.edit_session, name='edit_session'),
     path('sessions/<int:pk>/delete', views.delete_session, name='delete_session'),
+    path('terms', views.terms, name='terms'),
+    path('terms/create', views.new_term, name='new_term'),
+    path('terms/<int:pk>/edit', views.edit_term, name='edit_term'),
+    path('terms/<int:pk>/delete', views.delete_term, name='delete_term'),
 ]
