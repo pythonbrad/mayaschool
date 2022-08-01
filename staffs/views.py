@@ -49,11 +49,17 @@ def edit(request, pk):
         form = StaffForm(request.POST, request.FILES, instance=obj.person)
         if form.is_valid():
             form.save()
+            form.instance.staff.diploma = form.cleaned_data['diploma']
+            form.instance.staff.save()
             return redirect('staffs')
         else:
             pass
     else:
-        form = StaffForm(instance=obj.person)
+        form = StaffForm(
+            initial={
+                'diploma': obj.diploma
+            },
+            instance=obj.person)
     return render(request, 'object_form.html', {
         'title': 'Edit Staff',
         'current_page': 'staff',

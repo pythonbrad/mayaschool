@@ -55,6 +55,8 @@ def edit(request, pk):
         form = StudentForm(request.POST, request.FILES, instance=obj.person)
         if form.is_valid():
             form.save()
+            form.instance.student.guardian = form.cleaned_data['guardian_name']
+            form.instance.student.save()
             current_class = obj.get_current_class()
             if current_class.session == request.current_session:
                 current_class.subclass = SubClass.objects.get(pk=form.cleaned_data['current_class'])
@@ -68,7 +70,12 @@ def edit(request, pk):
         else:
             pass
     else:
-        form = StudentForm(instance=obj.person)
+        form = StudentForm(
+            initial={
+                "current_class": obj.get_current_class(),
+                "guardian_name": obj.guardian
+            },
+            instance=obj.person)
     return render(request, 'object_form.html', {
         'title': 'Edit Student',
         'current_page': 'student',
