@@ -4,7 +4,7 @@ from staffs.models import Staff
 from .models import SubClass, Class
 from finance.models import Invoice
 from django.contrib.auth.decorators import login_required
-from .forms import ClassForm
+from .forms import ClassForm, SubClassForm
 
 
 @login_required
@@ -84,5 +84,67 @@ def delete_class(request, pk):
         'title': 'Delete class',
         'object': obj,
         'current_page': 'setting.class.parent',
+    })
+
+
+@login_required
+def subclasses(request):
+    subclasses = SubClass.objects.all()
+    return render(request, 'core/subclasses_list.html', {
+        'title': 'Subclasses',
+        'current_page': 'setting.class.child',
+        'subclasses': subclasses,
+    })
+
+
+@login_required
+def new_subclass(request):
+    if request.POST:
+        form = SubClassForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('subclasses')
+        else:
+            pass
+    else:
+        form = SubClassForm()
+    return render(request, 'new_object.html', {
+        'title': 'New subclass',
+        'current_page': 'setting.class.child',
+        'form': form
+    })
+
+
+@login_required
+def edit_subclass(request, pk):
+    obj = get_object_or_404(SubClass, pk=pk)
+    if request.POST:
+        form = SubClassForm(request.POST, instance=obj)
+        if form.is_valid():
+            form.save()
+            return redirect('subclasses')
+        else:
+            pass
+    else:
+        form = SubClassForm(instance=obj)
+    return render(request, 'new_object.html', {
+        'title': 'Edit subclass',
+        'current_page': 'setting.class.child',
+        'form': form,
+    })
+
+
+@login_required
+def delete_subclass(request, pk):
+    obj = get_object_or_404(SubClass, pk=pk)
+    if request.POST:
+        obj.delete()
+        return redirect('subclasses')
+    else:
+        pass
+    return render(request, 'delete_object.html', {
+        'title': 'Delete subject',
+        'object': obj,
+        'current_page': 'setting.class.child',
     })
 
