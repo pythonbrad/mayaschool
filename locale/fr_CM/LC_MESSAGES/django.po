@@ -121,6 +121,14 @@ msgstr ""
 msgid "license"
 msgstr ""
 
+#: templates/object_form.html:23
+msgid "Create"
+msgstr "créer"
+
+#: templates/object_form.html:23
+msgid "Update"
+msgstr "Mettre à jour"
+
 #: templates/registration/login.html:11
 msgid "login_form"
 msgstr "formulaire de connexion"

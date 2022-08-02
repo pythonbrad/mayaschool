@@ -89,9 +89,10 @@ msgstr "nouveau reçu"
 
 #: finance/templates/finance/invoice_details.html:9
 msgid "print"
-msgstr ""
+msgstr "imprimer"
 
 #: finance/templates/finance/invoice_details.html:28
+#: finance/templates/finance/receipt_form.html:16
 msgid "expected_balance"
 msgstr "solde attendu"
 

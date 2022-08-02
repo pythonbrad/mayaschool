@@ -20,7 +20,7 @@
           </div>
         </div>
         {% endfor %}
-        <input type="submit" class="btn btn-primary" value="{% if form.instance.pk is None %}Create{% else %}Update{% endif %}">
+        <input type="submit" class="btn btn-primary" value="{% if form.instance.pk is None %}{{ _('Create') }}{% else %}{{ _('Update') }}{% endif %}">
       </div>
       {% block extra %}{% endblock %}
     </div>
