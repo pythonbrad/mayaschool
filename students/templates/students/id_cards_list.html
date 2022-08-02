@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="container-fluid card">
-  <div class="card-header row" id="filter">
+  <div class="card-header row no-print">
     <form class="col">
       <div class="row form-group">
         <label class="col-3" for="class">{{ _("class") | capfirst }}:</label>
@@ -135,11 +135,4 @@
     });
   }
 </script>
-<style type="text/css">
-  @media print {
-    #filter {
-      display: none;
-    }
-  }
-</style>
 {% endblock %}
