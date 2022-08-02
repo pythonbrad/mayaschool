@@ -25,7 +25,7 @@ class ReceiptForm(Form):
 
     class Meta:
        model = Receipt
-       exclude = ['date_paid']
+       exclude = ['date_paid', 'invoice']
 
 
 InvoiceItemFormSet = inlineformset_factory(

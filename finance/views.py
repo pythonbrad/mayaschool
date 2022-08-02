@@ -89,9 +89,11 @@ def delete_invoice(request, pk):
 
 @login_required
 def create_receipt(request, pk):
+    obj = get_object_or_404(Invoice, pk=pk)
     if request.POST:
         form = ReceiptForm(request.POST)
         if form.is_valid():
+            form.instance.invoice = obj
             form.save()
             return redirect('invoice_details', pk=pk)
         else:
@@ -100,7 +102,7 @@ def create_receipt(request, pk):
         form = ReceiptForm()
     return render(request, 'finance/receipt_form.html', {
         'title': _('add_receipt').capitalize(),
-        'invoice': get_object_or_404(Invoice, pk=pk),
+        'invoice': obj,
         'current_page': 'invoice',
         'form': form
     })
