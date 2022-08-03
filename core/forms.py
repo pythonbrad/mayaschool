@@ -1,6 +1,6 @@
 from django import forms
 from .models import Class, SubClass, AcademicSession, AcademicTerm, Subject, Person, SystemConfig
-
+from django.forms import inlineformset_factory, BaseInlineFormSet
 
 class Form(forms.ModelForm):
 
@@ -18,11 +18,19 @@ class ClassForm(Form):
         exclude = []
 
 
-class SubClassForm(Form):
+class SubClassInlineFormSet(BaseInlineFormSet):
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for form in self.forms:
+            for k in form.fields:
+                form.fields[k].widget.attrs.update({
+                    'class': 'form-control'
+                })
 
-    class Meta:
-        model = SubClass
-        exclude = []
+SubClassFormSet = inlineformset_factory(
+    Class, SubClass, exclude=[], can_delete=True,
+    formset=SubClassInlineFormSet)
 
 
 class AcademicSessionForm(Form):

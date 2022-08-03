@@ -2,11 +2,11 @@ from django.shortcuts import render
 from staffs.models import Staff
 from ..models import SubClass
 from django.contrib.auth.decorators import login_required
-from . import classe, session, subclass, subject, term, system_config
+from . import classe, session, subject, term, system_config
 from django.utils.translation import gettext as _
 
 
-__all__ = ['classe', 'session', 'subclass', 'subject', 'term', 'system_config']
+__all__ = ['classe', 'session', 'subject', 'term', 'system_config']
 
 
 @login_required

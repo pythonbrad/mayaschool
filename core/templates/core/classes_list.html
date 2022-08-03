@@ -14,6 +14,7 @@
           <tr>
             <th>{{ _("serial_number") | capfirst }}</th>
             <th>{{ _("name") | capfirst }}</th>
+            <th>{{ _("nb_subclass") | capfirst }}</th>
             <th>{{ _("option") | capfirst }}</th>
           </tr>
         </thead>
@@ -22,6 +23,7 @@
           <tr class='clickable-row' data-href="{% url 'edit_class' classe.pk %}">
               <td>{{ forloop.counter }}</td>
               <td>{{ classe.name }}</td>
+              <td>{{ classe.subclass_set.count }}</td>
               <td class="row text-center">
                 <a class="col btn" href="{% url 'edit_class' classe.pk %}"><i class="fa fa-edit text-primary"></i></a>
                 <a class="col btn" href="{% url 'delete_class' classe.pk %}"><i class="fa fa-trash-alt text-primary"></i></a>

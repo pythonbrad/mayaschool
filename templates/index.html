@@ -194,28 +194,12 @@
                     <p>{{ _("subject") | capfirst }}</p>
                   </a>
                 </li>
-                <li class="nav-item {% if '.class' in current_page %}menu-is-opening menu-open{% endif %}">
-                  <a href="#" class="nav-link {% if '.class' in current_page %}active{% endif %}">
+                <li class="nav-item">
+                  <a href="{% url 'classes' %}" class="nav-link {% if '.class' in current_page %}active{% endif %}">
                     &nbsp;&nbsp;&nbsp;
-                    <i class="nav-icon fas fa-chalkboard"></i>
-                    <p>{{ _("class") | capfirst }} <i class="right fas fa-angle-left"></i></p>
+                    <i class="fas fa-sitemap nav-icon"></i>
+                    <p>{{ _("class") | capfirst }}</p>
                   </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="{% url 'classes' %}" class="nav-link">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <i class="fas fa-square nav-icon"></i>
-                        <p>{{ _("parent") | capfirst }}</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="{% url 'subclasses' %}" class="nav-link">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <i class="fas fa-sitemap nav-icon"></i>
-                        <p>{{ _("child") | capfirst }}</p>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
                 <li class="nav-item">
                   <a href="{% url 'system_configs' %}" class="nav-link {% if '.system_config' in current_page %}active{% endif %}">
