@@ -60,7 +60,7 @@ def edit_invoice(request, pk):
             invoice_items_form.save()
             return redirect('invoices')
         else:
-            print(invoice_form.errors, invoice_items_form.errors)
+            pass
     else:
         invoice_form = InvoiceForm(instance=obj)
         invoice_items_form = InvoiceItemFormSet(instance=obj)

@@ -11,6 +11,11 @@
     <div class="col"><strong>{{ _("amount") | capfirst }}</strong></div>
   </div>
   {% for item in items %}
+    {% for label, error in item.errors.items %}
+  <div class="row">
+    <span>{{ error.as_text }}</span>
+  </div>
+    {% endfor %}
   <div class="form-group row items-group">
     {{ item.id.as_hidden }}
     <div class="col">{{ item.description }}</div>
