@@ -93,17 +93,34 @@ class AcademicTerm(models.Model):
             return AcademicTerm.objects.create(name="NONE", current=True)
 
 
+class Module(models.Model):
+    """Module."""
+
+    name = models.CharField(max_length=200, unique=True, verbose_name=_('name'))
+    code = models.CharField(max_length=16, unique=True, verbose_name=_('code'))
+
+    class Meta:
+        ordering = ["code"]
+        verbose_name = _('module').capitalize()
+
+    def __str__(self):
+        return self.code
+
+
 class Subject(models.Model):
     """Subject."""
 
     name = models.CharField(max_length=200, unique=True, verbose_name=_('name'))
+    code = models.CharField(max_length=16, unique=True, verbose_name=_('code'))
+    coef = models.PositiveIntegerField(default=1, verbose_name=_('coef'))
+    module = models.ForeignKey(Module, on_delete=models.CASCADE, verbose_name=_('group'))
 
     class Meta:
-        ordering = ["name"]
+        ordering = ["code"]
         verbose_name = _('subject').capitalize()
 
     def __str__(self):
-        return self.name
+        return self.code
 
 
 class Class(models.Model):
