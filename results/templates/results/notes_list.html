@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container-fluid card">
+  <div class="card-header">
+    <a class="btn btn-primary" href="{% url 'new_note' %}"><i class="fas fa-plus"></i> {{ _("add_note") | capfirst }}</a>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table id="notes_table" class="table table-bordered table-hover" data-page-length='100'>
+        <thead class="thead-light">
+          <tr>
+            <th>{{ _("serial_number") | capfirst }}</th>
+            <th>{{ _("student") | capfirst }}</th>
+            <th>{{ _("subject") | capfirst }}</th>
+            <th>{{ _("term") | capfirst }}</th>
+            <th>{{ _("value") | capfirst }}</th>
+            <th>{{ _("option") | capfirst }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for note in notes %}
+          <tr class='clickable-row' data-href="{% url 'edit_note' note.pk %}">
+              <td>{{ forloop.counter }}</td>
+              <td>{{ note.class_student.student }}</td>
+              <td>{{ note.subject }}</td>
+              <td>{{ note.term }}</td>
+              <td>{{ note.get_value }}</td>
+              <td class="row text-center">
+                <a class="col btn" href="{% url 'edit_note' note.pk %}"><i class="fa fa-edit text-primary"></i></a>
+                <a class="col btn" href="{% url 'delete_note' note.pk %}"><i class="fa fa-trash-alt text-primary"></i></a>
+              </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    $('#notes_table').DataTable({});
+</script>
+{% endblock %}

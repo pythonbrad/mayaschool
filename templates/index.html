@@ -145,21 +145,21 @@
                 <p>{{ _("finance") | capfirst }}</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link {% if current_page == 'result' %}active{% endif %}">
+            <li class="nav-item {% if 'result' in current_page %}menu-is-opening menu-open{% endif %}">
+              <a href="#" class="nav-link {% if 'result' in current_page %}active{% endif %}">
                 <i class="nav-icon fas fa-pencil-ruler"></i>
                 <p>{{ _("results") | capfirst }} <i class="right fas fa-angle-left"></i></p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{% url 'notes' %}" class="nav-link {% if '.note' in current_page %}active{% endif %}">
                     &nbsp;&nbsp;&nbsp;
                     <i class="far fa-edit nav-icon"></i>
                     <p>{{ _("note") | capfirst }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{% url 'report_cards' %}" class="nav-link {% if '.report_card' in current_page %}active{% endif %}">
                     &nbsp;&nbsp;&nbsp;
                     <i class="fas fa-file-alt nav-icon"></i>
                     <p>{{ _("report_card") | capfirst }}</p>
