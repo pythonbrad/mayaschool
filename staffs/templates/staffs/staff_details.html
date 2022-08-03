@@ -63,27 +63,27 @@
       </div>
     </div>
     <div class="card-footer">
-      <h4>{{ _("classes") | capfirst }}</h4>
-      {% if classes %}
+      <h4>{{ _("titled_classes") | capfirst }}</h4>
+      {% if staff.is_titular %}
         <table class="table table-sm table-bordered table-hover">
           <thead class="thead-light">
             <tr>
               <th>{{ _("class") | capfirst }}</th>
-              <th>{{ _("subject") | capfirst }}</th>
+              <th>{{ _("subclass") | capfirst }}</th>
             </tr>
           </thead>
           <tbody>
-            {% for classe in classes %}
+            {% for classe in staff.classtitular_set.all %}
               <tr>
+                <td>{{ classe.subclass.parent }}</td>
                 <td>{{ classe.subclass }}</td>
-                <td>{{ classe.subject }}</td>
               </tr>
             {% endfor %}
           </tbody>
         </table>
       {% else %}
-          {# Translators: We want inform the user that this staff is not a teacher #}
-          <p>{{ _("not_teacher") | capfirst }}</p>
+          {# Translators: We want inform the user that this staff is not a titular #}
+          <p>{{ _("not_titutlar") | capfirst }}</p>
       {% endif %}
     </div>
 </div>

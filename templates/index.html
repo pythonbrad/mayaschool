@@ -117,11 +117,27 @@
                 <p>{{ _("student") | capfirst }}</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="{% url 'staffs' %}" class="nav-link {% if current_page == 'staff' %}active{% endif %}">
+            <li class="nav-item {% if 'staff' in current_page %}menu-is-opening menu-open{% endif %}">
+              <a href="#" class="nav-link {% if 'staff' in current_page %}active{% endif %}">
                 <i class="nav-icon fas fa-user-tie"></i>
-                <p>{{ _("school_staff") | capfirst }}</p>
+                <p>{{ _("school_staff") | capfirst }} <i class="right fas fa-angle-left"></i></p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'staffs' %}" class="nav-link {% if 'staff' == current_page %}active{% endif %}">
+                    &nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-user-tie nav-icon"></i>
+                    <p>{{ _("staffs") | capfirst }}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'class_titulars' %}" class="nav-link {% if '.class_titular' in current_page %}active{% endif %}">
+                    &nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-user-tag nav-icon"></i>
+                    <p>{{ _("class_titulars") | capfirst }}</p>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item">
               <a href="{% url 'invoices' %}" class="nav-link {% if current_page == 'invoice' %}active{% endif %}">

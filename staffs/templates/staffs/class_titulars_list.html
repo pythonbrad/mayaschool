@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container-fluid card">
+  <div class="card-header">
+    <a class="btn btn-primary" href="{% url 'new_class_titular' %}"><i class="fas fa-plus"></i> {{ _("add_class_titular") | capfirst }}</a>
+    <a class="btn btn-primary" href="#"><i class="fas fa-upload"></i> {{ _("bulk_class_titulars") | capfirst }}</a>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table id="class_titulars_table" class="table table-bordered table-hover" data-page-length='100'>
+        <thead class="thead-light">
+          <tr>
+            <th>{{ _("serial_number") | capfirst }}</th>
+            <th>{{ _("titular") | capfirst }}</th>
+            <th>{{ _("class") | capfirst }}</th>
+            <th>{{ _("option") | capfirst }}</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for class_titular in class_titulars %}
+            <tr class='clickable-row' data-href="{% url 'edit_class_titular' class_titular.pk %}">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ class_titular.staff }}</td>
+                <td>{{ class_titular.subclass }}</td>
+                <td class="row text-center">
+                  <a class="col btn" href="{% url 'edit_class_titular' class_titular.pk %}"><i class="fa fa-edit text-primary"></i></a>
+                  <a class="col btn" href="{% url 'delete_class_titular' class_titular.pk %}"><i class="fa fa-trash-alt text-primary"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    $('#class_titulars_table').DataTable({});
+</script>
+{% endblock %}

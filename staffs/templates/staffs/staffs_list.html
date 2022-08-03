@@ -13,7 +13,7 @@
             <th>{{ _("serial_number") | capfirst }}</th>
             <th>{{ _("fullname") | capfirst }}</th>
             <th>{{ _("staff_id") | capfirst }}</th>
-            <th>{{ _("is_teacher") | capfirst }}</th>
+            <th>{{ _("is_titular") | capfirst }}</th>
             <th>{{ _("diploma") | capfirst }}</th>
             <th>{{ _("gender") | capfirst }}</th>
             <th>{{ _("mobile_number") | capfirst }}</th>
@@ -27,7 +27,7 @@
                 <td>{{ forloop.counter }}</td>
                 <td>{{ staff.person.lastname }} {{ staff.person.firstname }} {{ staff.person.other_name }}</td>
                 <td>{{ staff.person.matricule }}</td>
-                <td>{% if staff.is_teacher %}Yes{% else %}No{% endif %}</td>
+                <td>{% if staff.is_titular %}{{ _("yes") }}{% else %}{{ _("no") }}{% endif %}</td>
                 <td>{{ staff.diploma }}</td>
                 <td>{{ staff.person.get_gender_display }}</td>
                 <td>{{ staff.person.mobile_number }}</td>
