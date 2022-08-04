@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-01 16:32+0000\n"
+"POT-Creation-Date: 2022-08-04 21:03+0000\n"
 "PO-Revision-Date: 2022-08-01 10:43+0000\n"
 "Last-Translator: Fomegne Meudje <fomegnemeudje@outlook.com>\n"
 "Language-Team: Team <LL@li.org>\n"
@@ -33,11 +33,11 @@ msgstr "This action cannot be undone"
 msgid "confirm_delete"
 msgstr "confirm delete"
 
-#: templates/index.html:27 templates/index.html:164
+#: templates/index.html:27 templates/index.html:180
 msgid "session"
 msgstr ""
 
-#: templates/index.html:33 templates/index.html:171
+#: templates/index.html:33 templates/index.html:187
 msgid "term"
 msgstr ""
 
@@ -61,40 +61,40 @@ msgstr ""
 msgid "school_staff"
 msgstr "school staff"
 
-#: templates/index.html:129
+#: templates/index.html:130
+msgid "staffs"
+msgstr ""
+
+#: templates/index.html:137
+msgid "class_titulars"
+msgstr "class titulars"
+
+#: templates/index.html:145
 msgid "finance"
 msgstr ""
 
-#: templates/index.html:135
+#: templates/index.html:151
 msgid "results"
 msgstr ""
 
-#: templates/index.html:142
+#: templates/index.html:158
 msgid "note"
 msgstr ""
 
-#: templates/index.html:149
+#: templates/index.html:165
 msgid "report_card"
 msgstr "report card"
 
-#: templates/index.html:157
+#: templates/index.html:173
 msgid "settings"
 msgstr ""
 
-#: templates/index.html:178
-msgid "subject"
+#: templates/index.html:194
+msgid "module"
 msgstr ""
 
-#: templates/index.html:185
+#: templates/index.html:201
 msgid "class"
-msgstr ""
-
-#: templates/index.html:192
-msgid "parent"
-msgstr ""
-
-#: templates/index.html:199
-msgid "child"
 msgstr ""
 
 #: templates/index.html:208
@@ -119,6 +119,14 @@ msgstr ""
 
 #: templates/index.html:246
 msgid "license"
+msgstr ""
+
+#: templates/object_form.html:23
+msgid "Create"
+msgstr ""
+
+#: templates/object_form.html:23
+msgid "Update"
 msgstr ""
 
 #: templates/registration/login.html:11

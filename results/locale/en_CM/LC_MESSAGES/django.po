@@ -1,0 +1,89 @@
+# English translation of the core app
+# Copyright (C) 2022
+# This file is distributed under the same license as the mayaschool package.
+# pythonbrad <fomegnemeudje@outlook.com>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-04 21:03+0000\n"
+"PO-Revision-Date: 2022-08-04 10:43+0000\n"
+"Last-Translator: Fomegne Meudje <fomegnemeudje@outlook.com>\n"
+"Language-Team: Team <LL@li.org>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: results/models.py:12
+msgid "class_student"
+msgstr "class student"
+
+#: results/models.py:14 results/templates/results/notes_list.html:14
+msgid "subject"
+msgstr ""
+
+#: results/models.py:16
+msgid "session"
+msgstr ""
+
+#: results/models.py:18 results/templates/results/notes_list.html:15
+msgid "term"
+msgstr ""
+
+#: results/models.py:32
+msgid "note"
+msgstr ""
+
+#: results/models.py:33 results/templates/results/note_form.html:12
+#: results/templates/results/notes_list.html:16
+msgid "value"
+msgstr ""
+
+#: results/models.py:34 results/templates/results/note_form.html:11
+msgid "description"
+msgstr ""
+
+#: results/models.py:37
+msgid "note_item"
+msgstr "note item"
+
+#: results/templates/results/note_form.html:8
+msgid "note_structure"
+msgstr ""
+
+#: results/templates/results/notes_list.html:5 results/views.py:34
+msgid "add_note"
+msgstr "add note"
+
+#: results/templates/results/notes_list.html:12
+msgid "serial_number"
+msgstr "S/N"
+
+#: results/templates/results/notes_list.html:13
+msgid "student"
+msgstr ""
+
+#: results/templates/results/notes_list.html:17
+msgid "option"
+msgstr ""
+
+#: results/views.py:12
+msgid "notes_list"
+msgstr "notes list"
+
+#: results/views.py:57
+msgid "edit_note"
+msgstr "edit note"
+
+#: results/views.py:73
+msgid "delete_note"
+msgstr "delete note"
+
+#: results/views.py:83
+msgid "report_cards_list"
+msgstr "report cards list"

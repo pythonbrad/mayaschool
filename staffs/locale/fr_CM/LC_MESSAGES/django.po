@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-01 16:32+0000\n"
+"POT-Creation-Date: 2022-08-04 21:06+0000\n"
 "PO-Revision-Date: 2022-08-01 10:43+0000\n"
 "Last-Translator: Fomegne Meudje <fomegnemeudje@outlook.com>\n"
 "Language-Team: Team <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: staffs/forms.py:7 staffs/models.py:10
+#: staffs/forms.py:8 staffs/models.py:10
 #: staffs/templates/staffs/staff_details.html:49
 #: staffs/templates/staffs/staffs_list.html:17
 msgid "diploma"
@@ -27,29 +27,54 @@ msgstr "diplome"
 msgid "person"
 msgstr "personne"
 
-#: staffs/models.py:14
+#: staffs/models.py:14 staffs/models.py:31
 msgid "staff"
 msgstr "peronnel"
 
-#: staffs/models.py:31
-msgid "teacher"
-msgstr "enseignant"
-
 #: staffs/models.py:32 staffs/templates/staffs/staff_details.html:72
-msgid "subject"
-msgstr "matière"
-
-#: staffs/models.py:33
 msgid "subclass"
 msgstr "sous-classe"
 
-#: staffs/models.py:34
+#: staffs/models.py:33
 msgid "session"
 msgstr ""
 
-#: staffs/models.py:38
-msgid "class_teacher"
+#: staffs/models.py:37
+#, fuzzy
+#| msgid "class_teacher"
+msgid "class_titular"
 msgstr "enseignant"
+
+#: staffs/templates/staffs/class_titulars_list.html:5 staffs/views.py:107
+#, fuzzy
+#| msgid "class_teacher"
+msgid "add_class_titular"
+msgstr "enseignant"
+
+#: staffs/templates/staffs/class_titulars_list.html:6
+#, fuzzy
+#| msgid "bulk_staffs"
+msgid "bulk_class_titulars"
+msgstr "importer des personnels"
+
+#: staffs/templates/staffs/class_titulars_list.html:13
+#: staffs/templates/staffs/staffs_list.html:13
+msgid "serial_number"
+msgstr "S/N"
+
+#: staffs/templates/staffs/class_titulars_list.html:14
+msgid "titular"
+msgstr ""
+
+#: staffs/templates/staffs/class_titulars_list.html:15
+#: staffs/templates/staffs/staff_details.html:71
+msgid "class"
+msgstr "classe"
+
+#: staffs/templates/staffs/class_titulars_list.html:16
+#: staffs/templates/staffs/staffs_list.html:21
+msgid "option"
+msgstr ""
 
 #: staffs/templates/staffs/staff_details.html:8
 msgid "print"
@@ -73,29 +98,23 @@ msgid "other_name"
 msgstr "autre nom"
 
 #: staffs/templates/staffs/staff_details.html:66
-msgid "classes"
+msgid "titled_classes"
 msgstr ""
 
-#: staffs/templates/staffs/staff_details.html:71
-msgid "class"
-msgstr "classe"
-
-#. Translators: We want inform the user that this staff is not a teacher
+#. Translators: We want inform the user that this staff is not a titular
 #: staffs/templates/staffs/staff_details.html:86
-msgid "not_teacher"
+#, fuzzy
+#| msgid "not_teacher"
+msgid "not_titutlar"
 msgstr "ce personnel n'est pas un enseignant"
 
-#: staffs/templates/staffs/staffs_list.html:5 staffs/views.py:40
+#: staffs/templates/staffs/staffs_list.html:5 staffs/views.py:39
 msgid "add_staff"
 msgstr "nouveau personnel"
 
 #: staffs/templates/staffs/staffs_list.html:6
 msgid "bulk_staffs"
 msgstr "importer des personnels"
-
-#: staffs/templates/staffs/staffs_list.html:13
-msgid "serial_number"
-msgstr "S/N"
 
 #: staffs/templates/staffs/staffs_list.html:14
 msgid "fullname"
@@ -106,7 +125,9 @@ msgid "staff_id"
 msgstr "identifiant du personnel"
 
 #: staffs/templates/staffs/staffs_list.html:16
-msgid "is_teacher"
+#, fuzzy
+#| msgid "is_teacher"
+msgid "is_titular"
 msgstr "enseignant?"
 
 #: staffs/templates/staffs/staffs_list.html:18
@@ -117,22 +138,48 @@ msgstr "genre"
 msgid "status"
 msgstr ""
 
-#: staffs/templates/staffs/staffs_list.html:21
-msgid "option"
+#: staffs/templates/staffs/staffs_list.html:30
+msgid "yes"
 msgstr ""
 
-#: staffs/views.py:12
+#: staffs/templates/staffs/staffs_list.html:30
+msgid "no"
+msgstr ""
+
+#: staffs/views.py:11
 msgid "staffs_list"
 msgstr "liste des personnels"
 
-#: staffs/views.py:22
+#: staffs/views.py:21
 msgid "staff_details"
 msgstr "detail du personnel"
 
-#: staffs/views.py:65
+#: staffs/views.py:64
 msgid "edit_staff"
 msgstr "éditer le personnel"
 
-#: staffs/views.py:80
+#: staffs/views.py:79
 msgid "delete_staff"
 msgstr "supprimer le personnel"
+
+#: staffs/views.py:89
+#, fuzzy
+#| msgid "class_teacher"
+msgid "class_titulars"
+msgstr "enseignant"
+
+#: staffs/views.py:126
+msgid "edit_class_titular"
+msgstr ""
+
+#: staffs/views.py:141
+#, fuzzy
+#| msgid "delete_staff"
+msgid "delete_class_titular"
+msgstr "supprimer le personnel"
+
+#~ msgid "teacher"
+#~ msgstr "enseignant"
+
+#~ msgid "subject"
+#~ msgstr "matière"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-01 16:32+0000\n"
+"POT-Creation-Date: 2022-08-04 21:03+0000\n"
 "PO-Revision-Date: 2022-08-01 10:43+0000\n"
 "Last-Translator: Fomegne Meudje <fomegnemeudje@outlook.com>\n"
 "Language-Team: Team <LL@li.org>\n"
@@ -83,7 +83,7 @@ msgstr "Receipt on {self.date_paid}"
 msgid "receipt"
 msgstr ""
 
-#: finance/templates/finance/invoice_details.html:7 finance/views.py:102
+#: finance/templates/finance/invoice_details.html:7 finance/views.py:104
 msgid "add_receipt"
 msgstr "add receipt"
 
@@ -92,6 +92,7 @@ msgid "print"
 msgstr ""
 
 #: finance/templates/finance/invoice_details.html:28
+#: finance/templates/finance/receipt_form.html:16
 msgid "expected_balance"
 msgstr "expected balance"
 
@@ -157,7 +158,6 @@ msgid "total_paid"
 msgstr "total payer"
 
 #: finance/templates/finance/invoices_list.html:20
-#: finance/templates/finance/receipt_form.html:16
 msgid "balance"
 msgstr ""
 
@@ -181,10 +181,10 @@ msgstr "edit invoice"
 msgid "delete_invoice"
 msgstr "delete invoice"
 
-#: finance/views.py:122
+#: finance/views.py:124
 msgid "edit_receipt"
 msgstr "edit receipt"
 
-#: finance/views.py:138
+#: finance/views.py:140
 msgid "delete_receipt"
 msgstr "delete receipt"

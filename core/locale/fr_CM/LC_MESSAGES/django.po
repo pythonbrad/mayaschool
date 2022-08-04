@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-01 16:32+0000\n"
+"POT-Creation-Date: 2022-08-04 21:06+0000\n"
 "PO-Revision-Date: 2022-08-01 10:43+0000\n"
 "Last-Translator: Fomegne Meudje <fomegnemeudje@outlook.com>\n"
 "Language-Team: Team <LL@li.org>\n"
@@ -29,11 +29,12 @@ msgstr "valeur"
 msgid "system_config"
 msgstr "configuration système"
 
-#: core/models.py:25 core/models.py:62 core/models.py:99 core/models.py:112
-#: core/models.py:127 core/templates/core/classes_list.html:16
+#: core/models.py:25 core/models.py:62 core/models.py:99 core/models.py:113
+#: core/models.py:129 core/models.py:144
+#: core/templates/core/classes_list.html:16
+#: core/templates/core/module_form.html:11
+#: core/templates/core/modules_list.html:13
 #: core/templates/core/sessions_list.html:13
-#: core/templates/core/subclasses_list.html:14
-#: core/templates/core/subjects_list.html:13
 #: core/templates/core/terms_list.html:13
 msgid "name"
 msgstr "nom"
@@ -50,119 +51,139 @@ msgstr "année académique"
 msgid "academic_term"
 msgstr "trimestre"
 
-#: core/models.py:103
+#: core/models.py:100 core/models.py:114
+#: core/templates/core/module_form.html:12
+#: core/templates/core/modules_list.html:14
+msgid "code"
+msgstr ""
+
+#: core/models.py:104
+msgid "module"
+msgstr ""
+
+#: core/models.py:115 core/templates/core/module_form.html:13
+msgid "coef"
+msgstr ""
+
+#: core/models.py:116
+msgid "group"
+msgstr ""
+
+#: core/models.py:120
 msgid "subject"
 msgstr "matière"
 
-#: core/models.py:115
+#: core/models.py:132
 msgid "class"
 msgstr "classe"
 
-#: core/models.py:116 core/templates/core/dashboard.html:41
+#: core/models.py:133 core/templates/core/dashboard.html:41
 msgid "classes"
 msgstr "classes"
 
-#: core/models.py:126 core/templates/core/subclasses_list.html:13
+#: core/models.py:143
 msgid "parent"
 msgstr "parent"
 
-#: core/models.py:130
+#: core/models.py:147
 msgid "subclass"
 msgstr "sous-classe"
 
-#: core/models.py:131
+#: core/models.py:148 core/templates/core/class_form.html:8
 msgid "subclasses"
 msgstr "sous-classes"
 
-#: core/models.py:142
+#: core/models.py:159
 msgid "active"
 msgstr "actif"
 
-#: core/models.py:142
+#: core/models.py:159
 msgid "inactive"
 msgstr "inactif"
 
-#: core/models.py:144
+#: core/models.py:161
 msgid "male"
 msgstr "mâle"
 
-#: core/models.py:144
+#: core/models.py:161
 msgid "female"
 msgstr "femelle"
 
-#: core/models.py:147
+#: core/models.py:164
 msgid "status"
 msgstr ""
 
-#: core/models.py:149
+#: core/models.py:166
 msgid "matricule"
 msgstr ""
 
-#: core/models.py:150
+#: core/models.py:167
 msgid "lastname"
 msgstr "nom de famille"
 
-#: core/models.py:151
+#: core/models.py:168
 msgid "firstname"
 msgstr "prénom"
 
-#: core/models.py:152
+#: core/models.py:169
 msgid "othername"
 msgstr "autre nom"
 
-#: core/models.py:153
+#: core/models.py:170
 msgid "gender"
 msgstr "genre"
 
-#: core/models.py:155
+#: core/models.py:172
 msgid "joined_date"
 msgstr "date d'adhésion"
 
 #. Translators: We want inform the user that the mobile number don't respect the format
-#: core/models.py:160
+#: core/models.py:177
 msgid "wrong_mobile_number"
 msgstr "Le numéro de téléphone entré n'est pas dans le bon format"
 
-#: core/models.py:163
+#: core/models.py:180
 msgid "mobile_number"
 msgstr "numéro de téléphone"
 
-#: core/models.py:166
+#: core/models.py:183
 msgid "address"
 msgstr ""
 
-#: core/models.py:167
+#: core/models.py:184
 msgid "others"
 msgstr "autres"
 
-#: core/models.py:168
+#: core/models.py:185
 msgid "passport"
 msgstr "photo 4x4"
 
-#: core/models.py:169
+#: core/models.py:186
 msgid "email"
 msgstr ""
 
-#: core/models.py:173
+#: core/models.py:190
 msgid "person"
 msgstr "personne"
 
-#: core/templates/core/classes_list.html:7 core/views/classe.py:30
+#: core/templates/core/classes_list.html:7 core/views/classe.py:34
 msgid "add_class"
 msgstr "ajouter une classe"
 
 #: core/templates/core/classes_list.html:15
+#: core/templates/core/modules_list.html:12
 #: core/templates/core/sessions_list.html:12
-#: core/templates/core/subclasses_list.html:12
-#: core/templates/core/subjects_list.html:12
 #: core/templates/core/terms_list.html:12
 msgid "serial_number"
 msgstr "S/N"
 
 #: core/templates/core/classes_list.html:17
+msgid "nb_subclass"
+msgstr "nb sous-classe"
+
+#: core/templates/core/classes_list.html:18
+#: core/templates/core/modules_list.html:16
 #: core/templates/core/sessions_list.html:15
-#: core/templates/core/subclasses_list.html:15
-#: core/templates/core/subjects_list.html:14
 #: core/templates/core/system_configs_list.html:14
 #: core/templates/core/terms_list.html:15
 msgid "option"
@@ -185,6 +206,18 @@ msgstr "personnels"
 msgid "incomes"
 msgstr "revenus"
 
+#: core/templates/core/module_form.html:8
+msgid "subjects"
+msgstr "matières"
+
+#: core/templates/core/modules_list.html:5 core/views/module.py:34
+msgid "add_module"
+msgstr ""
+
+#: core/templates/core/modules_list.html:15
+msgid "nb_subject"
+msgstr "nb matière"
+
 #: core/templates/core/sessions_list.html:5 core/views/session.py:30
 #: core/views/term.py:30
 msgid "add_session"
@@ -194,14 +227,6 @@ msgstr "nouvelle session"
 #: core/templates/core/terms_list.html:14
 msgid "current_status"
 msgstr "actuelle?"
-
-#: core/templates/core/subclasses_list.html:5 core/views/subclass.py:30
-msgid "add_subclass"
-msgstr "nouvelle sous-classe"
-
-#: core/templates/core/subjects_list.html:5 core/views/subject.py:30
-msgid "add_subject"
-msgstr "nouvelle matière"
 
 #: core/templates/core/system_configs_list.html:5
 #: core/views/system_config.py:30
@@ -220,13 +245,25 @@ msgstr "tableau de bord"
 msgid "classes_list"
 msgstr "liste des salles de classe"
 
-#: core/views/classe.py:49
+#: core/views/classe.py:57
 msgid "edit_class"
 msgstr "éditer une classe"
 
-#: core/views/classe.py:64
+#: core/views/classe.py:73
 msgid "delete_class"
 msgstr "supprimer une classe"
+
+#: core/views/module.py:12
+msgid "modules_list"
+msgstr "liste des modules"
+
+#: core/views/module.py:57
+msgid "edit_module"
+msgstr "éditer un module"
+
+#: core/views/module.py:73
+msgid "delete_module"
+msgstr "supprimer un module"
 
 #: core/views/session.py:12
 msgid "sessions_list"
@@ -239,30 +276,6 @@ msgstr "éditer une session"
 #: core/views/session.py:64
 msgid "delete_session"
 msgstr "supprimer une session"
-
-#: core/views/subclass.py:12
-msgid "subclasses_list"
-msgstr "liste des sous-classes"
-
-#: core/views/subclass.py:49
-msgid "edit_subclass"
-msgstr "éditer une sous-classe"
-
-#: core/views/subclass.py:64
-msgid "delete_subclass"
-msgstr "supprimer une sous-classe"
-
-#: core/views/subject.py:12
-msgid "subjects_list"
-msgstr "liste des matières"
-
-#: core/views/subject.py:49
-msgid "edit_subject"
-msgstr "éditer une matière"
-
-#: core/views/subject.py:64
-msgid "delete_subject"
-msgstr "supprimer une matière"
 
 #: core/views/system_config.py:12
 msgid "system_configs_list"
@@ -287,3 +300,9 @@ msgstr "éditer un trimestre"
 #: core/views/term.py:64
 msgid "delete_term"
 msgstr "supprimer un trimestre"
+
+#~ msgid "edit_subject"
+#~ msgstr "éditer une matière"
+
+#~ msgid "delete_subject"
+#~ msgstr "supprimer une matière"

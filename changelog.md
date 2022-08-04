@@ -1,5 +1,8 @@
 # Changelog
 
+## 2022-06-04
+- Update the translation
+
 ## 2022-06-03
 - Add the report card management
 - Add the note management
