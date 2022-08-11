@@ -14,7 +14,7 @@ class Student(models.Model):
         verbose_name = _("student").capitalize()
 
     def __str__(self):
-        return f"{self.person.lastname} {self.person.firstname} {self.person.other_name} ({self.person.matricule})"
+        return f"{self.person} ({self.person.matricule})"
 
     def save(self, *args, **kwargs):
         """Save."""

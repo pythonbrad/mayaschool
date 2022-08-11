@@ -25,7 +25,7 @@
             {% for staff in staffs %}
             <tr class='clickable-row' data-href="{% url 'staff_details' staff.pk %}">
                 <td>{{ forloop.counter }}</td>
-                <td>{{ staff.person.lastname }} {{ staff.person.firstname }} {{ staff.person.other_name }}</td>
+                <td>{{ staff.person }}</td>
                 <td>{{ staff.person.matricule }}</td>
                 <td>{% if staff.is_titular %}{{ _("yes") }}{% else %}{{ _("no") }}{% endif %}</td>
                 <td>{{ staff.diploma }}</td>

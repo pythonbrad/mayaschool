@@ -199,3 +199,5 @@ class Person(models.Model):
         )).replace(' ', '0')
         self.save(update_fields=['matricule'])
 
+    def __str__(self):
+        return self.lastname + " " + self.firstname
