@@ -1,0 +1,170 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid card">
+	<div class="card-header">
+		<form class="col">
+	      <div class="row form-group">
+	        <label class="col-3" for="class">{{ _("class") | capfirst }}:</label>
+	        <select class="form-control col" id="class" name="class" onchange="load_subclass()">
+	          <option value="">---</option>
+	        </select>
+	      </div>
+	      <div class="row form-group">
+	        <label class="col-3" for="subclass">{{ _("subclass") | capfirst }}:</label>
+	        <select class="form-control col" id="subclass" name="subclass">
+	          <option value="">---</option>
+	        </select>
+	      </div>
+	      <div class="row">
+	        <button class="form-control btn btn-success">{{ _("sort") | capfirst }}</button>
+	      </div>
+	    </form>
+	</div>
+	{% for class_student, d in data.items %}
+	<div class="card-body">
+		<div class="row">
+			<div class="col-1">
+				<img src="{% static 'img/logo.png' %}" class="img-fluid">
+			</div>
+			<div class="col">
+				<div class="row" style="justify-content: center;">
+					<h1 class="font-weight-bold">{{ request.system_config.school_name|default:"SCHOOL_NAME" }}</h1>
+				</div>
+				<div class="row" style="justify-content: center;">
+					<span>{{ request.system_config.school_address|default:"SCHOOL_ADDRESS" }}</span>
+				</div>
+				<div class="row" style="justify-content: center;">
+					<span>{{ _("TEL") }}: {{ request.system_config.school_phone|default:"SCHOOL_PHONE" }}. {{ _("Email") }}: {{ request.system_config.school_email|default:"SCHOOL_EMAIL" }}</span>
+				</div>
+				<div class="row">&nbsp;</div>
+				<div class="row">&nbsp;</div>
+				<div class="row" style="justify-content: center;">
+					<h4 class="font-weight-bold"><u>{{ _("FIRST TERM STUDENT'S PERFORMANCE REPORT") }}</u></h4>
+				</div>
+			</div>
+		</div>
+		<div class="row">&nbsp;</div>
+		<div class="row">
+			<div class="col">
+				<div class="row">
+					<div class="col"><span class="font-weight-bold">{{ _("NAME") }}:</span> {{ class_student.student.person }}</div>
+					<div class="col"><span class="font-weight-bold">{{ _("GENDER") }}:</span> {{ class_student.student.person.get_gender_display }}</div>
+					<div class="col"><span class="font-weight-bold">{{ _("CLASS") }}:</span> {{ class_student.subclass }}</div>
+					<div class="col"><span class="font-weight-bold">{{ _("SESSION") }}:</span> {{ request.current_session }}</div>
+					<div class="col"><span class="font-weight-bold">{{ _("ADMISSION NO") }}:</span> {{ class_student.student.person.matricule }}</div>
+					<div class="col"><span class="font-weight-bold">{{ _("DOB") }}:</span> {{ class_student.student.person.date_of_birth }}</div>
+				</div>
+				<div class="row">&nbsp;</div>
+				<div class="row">
+					<div class="col">
+						<table class="table">
+							<th class="bg-secondary">{{ _("GRADE") }}</th>
+							<th class="bg-secondary">{{ _("A") }}</th>
+							<th class="bg-secondary">{{ _("B") }}</th>
+							<th class="bg-secondary">{{ _("C") }}</th>
+							<th class="bg-secondary">{{ _("D") }}</th>
+							<th class="bg-secondary">{{ _("E") }}</th>
+							<th class="bg-secondary">{{ _("F") }}</th>
+							<tr>
+								<th class="bg-secondary">{{ _("NO") }}</th>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<th class="bg-secondary">{{ _("TOTAL SUBJECTS OFFERED") }}</th>
+								<td>{{ stats | length }}</td>
+							</tr>
+							<tr>
+								<th class="bg-secondary">{{ _("TOTAL OBTAINED") }}</th>
+								<td>{{ d.subject | length }}</td>
+							</tr>
+							<tr>
+								<th class="bg-secondary">{{ _("TOTAL OBTAINABLE") }}</th>
+								<td>{{ stats | length }}</td>
+							</tr>
+						</table>
+					</div>
+					<div class="col-4">
+						<table class="table">
+							<tr>
+								<th class="bg-secondary">%{{ _("TAGE") }}</th>
+								<td>{{ d.avg }}%</td>
+							</tr>
+							<tr>
+								<th class="bg-secondary">{{ _("GRADE") }}</th>
+								<td>-</td>
+							</tr>
+							<tr>
+								<th class="bg-secondary">{{ _("RANK") }}</th>
+								<td>{{ d.rank }}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-2">
+				<img src="{% static 'vendor/adminlte/img/avatar.png' %}" class="img-fluid">
+			</div>
+		</div>
+		<div class="row">
+			<table class="table">
+				<th>{{ _("SUBJECTS") }}</th>
+				<th>{{ _("C.A") }}</th>
+				<th>{{ _("EXAM") }}</th>
+				<th>{{ _("TOTAL") }}</th>
+				<th>{{ _("GRADE") }}</th>
+				<th>{{ _("POSITION") }}</th>
+				<th>{{ _("REMARKS") }}</th>
+				<th>{{ _("CLASS MIN") }}</th>
+				<th>{{ _("CLASS AVG") }}</th>
+				<th>{{ _("CLASS MAX") }}</th>
+				{% for subject, ds in d.subject.items %}
+				<tr>
+					<td>{{ subject.name }}</td>
+					<td>{{ ds.value }}</td>
+					<td>{{ ds.value }}</td>
+					<td>{{ ds.value }}</td>
+					<td>-</td>
+					<td>{{ ds.rank }}</td>
+					<td>-</td>
+					{% for stat, dst in stats.items %}
+						{% if stat == subject %}
+						<td>{{ dst.min }}</td>
+						<td>{{ dst.avg }}</td>
+						<td>{{ dst.max }}</td>
+						{% endif %}
+					{% endfor %}
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+	<div class="row">&nbsp;</div>
+	{% endfor %}
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+  options = {{ options|safe }};
+  var classes = Object.entries(options);
+  classes.forEach(function (item) {
+    $('#class').append("<option value='" + item[0] + "'>" + item[1]["name"] + "</option>");
+  });
+  function load_subclass() {
+    $('#subclass').html("<option value=''>---</option>");
+    var classe = $('#class').val();
+    var subclasses = Object.entries(
+      (options[classe] || {})['classes'] || {}
+    );
+    subclasses.forEach(function (item) {
+      $('#subclass').append("<option value='" + item[0] + "'>" + item[1] + "</option>");
+    });
+  }
+</script>
+{% endblock %}

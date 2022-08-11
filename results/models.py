@@ -19,9 +19,10 @@ class Note(models.Model):
 
     class Meta:
         ordering = ["subject"]
+        unique_together = (('class_student', 'subject', 'session', 'term'),)
 
     def __str__(self):
-        return f"{self.class_student.student} {self.subject} {self.term} {self.value}"
+        return f"{self.class_student.student} {self.subject} {self.term}"
 
     def get_value(self):
         value = self.noteitem_set.aggregate(value=Avg('value'))
