@@ -7,4 +7,4 @@ static/vendor
 debug.log*
 *.mo
 .env
-venv
+.maya_venv

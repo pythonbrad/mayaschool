@@ -14,8 +14,8 @@ git clone -b dev https://github.com/pythonbrad/mayaschool.git --depth 1
 
 - Creating of a virtual env
 ```bash
-python3 -m venv maya_env
-source maya_env/bin/activate
+python3 -m venv .maya_env
+source .maya_env/bin/activate
 ```
 
 - How to install the depedencies
