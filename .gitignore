@@ -4,5 +4,7 @@ __pycache__
 db.sqlite3
 media
 static/vendor
-*.log
+debug.log*
 *.mo
+.env
+venv

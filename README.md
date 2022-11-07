@@ -20,13 +20,17 @@ source maya_env/bin/activate
 
 - How to install the depedencies
 ```bash
-pip install django
-pip install pillow
+pip install -r requirements.txt
+```
+
+- Config the environment (.env file)
+```bash
+cd mayaschool
+cp .env_example .env
 ```
 
 - How to config the database
-```bash
-cd mayaschool
+```
 python manage.py makemigrations
 python manage.py migrate
 ```
